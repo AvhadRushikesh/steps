@@ -5,7 +5,7 @@
              x:Class="steps.MVVM.Views.Movies"
              Title="Movies">
 
-    <Grid RowDefinitions=".1*,.05*,.3*,.6*"
+    <Grid RowDefinitions=".1*,.05*,.3*,.4*"
           BackgroundColor="AliceBlue">
 
         <Button 
@@ -22,10 +22,11 @@
         <SearchBar 
             Grid.Row="1"
             Placeholder="Search Movie Name" 
-            FontAttributes="Bold"/>
+            FontAttributes="Bold"
+            TextColor="Black"/>
 
         <Grid Grid.Row="2"
-              BackgroundColor="DarkBlue">
+              BackgroundColor="Navy">
             <VerticalStackLayout>
                 <Entry 
                     x:Name="Id"
@@ -41,7 +42,7 @@
                     Text="{Binding AddMovie.Description}"/>
                 <Entry
                     x:Name="Rating"
-                    Placeholder="Movie Rating"                    
+                    Placeholder="Movie Rating"
                     Text="{Binding AddMovie.Rating}"/>
                 <Entry
                     x:Name="Image"
@@ -49,18 +50,19 @@
                     Text="{Binding AddMovie.Image}"/>
                 <Button
                     x:Name="AddOrUpdate"
-                    Text="Add" 
+                    Text="Add"
                     BackgroundColor="Aqua"
                     FontAttributes="Bold"
                     FontSize="Medium"
+                    WidthRequest="350"
                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center"                    
                     Command="{Binding AddOrUpdateCommand}"/>
             </VerticalStackLayout>
         </Grid>
 
         <Grid Grid.Row="3"
-              BackgroundColor="White">
+              BackgroundColor="AliceBlue">
 
             <CollectionView
                 ItemsSource="{Binding movies}"
@@ -80,7 +82,7 @@
                             </SwipeView.LeftItems>
 
 
-                            <Grid ColumnDefinitions="*,*,*,*,*" >
+                            <Grid ColumnDefinitions="*,*,*,*,*">
                                 <Label
                                 Grid.Column="0"
                                 Text="{Binding Id}"

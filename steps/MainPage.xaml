@@ -4,17 +4,26 @@
              x:Class="steps.MainPage"
              >
 
-    <Grid BackgroundColor="White" x:Name="GridName">
+    <Grid x:Name="GridName" >
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,0">
+                <GradientStopCollection>
+                    <GradientStop Offset="0" Color="DarkCyan" />
+                    <GradientStop Offset="60" Color="Blue" />
+                </GradientStopCollection>
+            </LinearGradientBrush>
+        </Grid.Background>
         
         <VerticalStackLayout Spacing="10"
                              Padding="100">
             
-        <Entry Placeholder="User Name" 
+        <Entry Placeholder="User Name"
                VerticalOptions="Center"
                HorizontalOptions="Center"
                TextColor="Black"
                HorizontalTextAlignment="Center"
-               BackgroundColor="AliceBlue"
+               BackgroundColor="Green"
                HeightRequest="50"
                WidthRequest="200"/>
         <Entry Placeholder="Password" 
