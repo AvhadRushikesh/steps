@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="steps.MVVM.Views.Movies"
+             Title="Movies">
+
+    <Grid RowDefinitions=".1*,.05*,.3*,.6*"
+          BackgroundColor="AliceBlue">
+
+        <Button 
+            Grid.Row="0"
+            Text="Set Background Color"
+                    BackgroundColor="Yellow"
+                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    VerticalOptions="Center"
+                    TextColor="Green"
+                    FontAttributes="Bold"/>
+
+        <SearchBar 
+            Grid.Row="1"
+            Placeholder="Search Movie Name" 
+            FontAttributes="Bold"/>
+
+        <Grid Grid.Row="2"
+              BackgroundColor="DarkBlue">
+            <VerticalStackLayout>
+                <Entry 
+                    x:Name="Id"
+                    Placeholder="ID"
+                    Text="0"/>
+                <Entry
+                    x:Name="Name"
+                    Placeholder="Movie Name"
+                    Text="{Binding AddMovie.Name}"/>
+                <Entry
+                    x:Name="Description"
+                    Placeholder="Movie Description"
+                    Text="{Binding AddMovie.Description}"/>
+                <Entry
+                    x:Name="Rating"
+                    Placeholder="Movie Rating"                    
+                    Text="{Binding AddMovie.Rating}"/>
+                <Entry
+                    x:Name="Image"
+                    Placeholder="http://image.url"
+                    Text="{Binding AddMovie.Image}"/>
+                <Button
+                    x:Name="AddOrUpdate"
+                    Text="Add" 
+                    BackgroundColor="Aqua"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddOrUpdateCommand}"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="3"
+              BackgroundColor="White">
+
+            <CollectionView
+                ItemsSource="{Binding movies}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*,*,*,*" >
+                            <Label 
+                                Grid.Column="0"
+                                Text="{Binding Id}" 
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Column="1"
+                                Text="{Binding Name}" 
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Column="2"
+                                Text="{Binding Description}" 
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Column="3"
+                                Text="{Binding Rating}" 
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Column="4"
+                                Text="{Binding ImageUrl}" 
+                                TextColor="Black"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+
+
+
+    </Grid>
+
+
+
+</ContentPage>

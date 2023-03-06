@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="steps.NewFolder.Views.Home">
+
+  
+    
+    <ContentPage.Resources>
+        <Color x:Key="Primary">#ab3527</Color>
+        <Color x:Key="Secondary">#775752</Color>
+        <Color x:Key="Tertiary">#705c2e</Color>
+    </ContentPage.Resources>
+
+    <Grid x:Name="Container" BackgroundColor="Violet" RowDefinitions=".2*,.8*">
+        <Label Text="Save Color as Background Color for Application" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               FontSize="Medium"/>
+        <Frame Grid.Row="1" Margin="10,10,10,10" VerticalOptions="Center" BackgroundColor="White" Opacity=".8">
+            <VerticalStackLayout Spacing="15" VerticalOptions="Center">
+                <Label 
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Set Background Color"/>
+                
+                <Label Text="Red Color"/>
+                <Slider
+                    x:Name="sldRed"
+                    MaximumTrackColor="{StaticResource Tertiary}"
+                    MinimumTrackColor="{StaticResource Secondary}"
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="Slider_ValueChanged"/>
+                
+                <Label Text="Green Color"/>
+                <Slider
+                    x:Name="sldGreen"
+                    MaximumTrackColor="{StaticResource Tertiary}"
+                    MinimumTrackColor="{StaticResource Secondary}"
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="Slider_ValueChanged"/>
+                
+                <Label Text="Blue Color"/>
+                <Slider
+                    x:Name="sldBlue"
+                    MaximumTrackColor="{StaticResource Tertiary}"
+                    MinimumTrackColor="{StaticResource Secondary}"
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="Slider_ValueChanged"/>
+                
+                <Frame CornerRadius="25" HorizontalOptions="Center" BackgroundColor="DarkBlue">
+                    <HorizontalStackLayout>
+                        <Label
+                            x:Name="lblHex"
+                            HorizontalTextAlignment="End"
+                            Text="HEX Value: #000000"
+                            FontSize="Medium"
+                            TextColor="White"
+                            VerticalOptions="Center"/>
+                        <ImageButton
+                            Margin="200,0,0,0"
+                            HeightRequest="25"
+                            Source="dotnet_bot.png"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End"
+                            WidthRequest="25"
+                            Clicked="ImageButton_Clicked"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                
+                <Button x:Name="btnRandom"
+                        BackgroundColor="{StaticResource Primary}"
+                        Text="Generate Random color"
+                        FontSize="Medium"
+                        Clicked="btnRandom_Clicked"/>
+                <Button x:Name="SaveBackground"
+                        BackgroundColor="PeachPuff"
+                        Text="Save as background Color"
+                        Clicked="SaveBackGround" 
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        TextColor="Orange"/>
+
+            </VerticalStackLayout>
+            
+        </Frame>
+
+        
+
+    </Grid>
+    
+    
+</ContentPage>
