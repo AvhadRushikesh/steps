@@ -14,8 +14,8 @@ public partial class Movies : ContentPage
         BindingContext = new MoviesViewModel();
     }
 
-    private void SetBackground(object sender, EventArgs e)
+    private async void SetBackground(object sender, EventArgs e)
     {
-        // await Navigation.PushAsync(new Home());
+        await Navigation.PushAsync(new Home());
     }
 }

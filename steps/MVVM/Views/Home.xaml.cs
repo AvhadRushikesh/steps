@@ -56,14 +56,6 @@ public partial class Home : ContentPage
         isRandom = false;
     }
 
-    private async void ImageButton_Clicked(object sender, EventArgs e)
-    {
-        await Clipboard.SetTextAsync(hexValue);
-        var toast = Toast.Make("Color Copied",
-            CommunityToolkit.Maui.Core.ToastDuration.Short,
-            12);
-        await toast.Show();
-    }
 
     #endregion
 

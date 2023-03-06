@@ -25,7 +25,9 @@
                     HorizontalTextAlignment="Center"
                     Text="Set Background Color"/>
                 
-                <Label Text="Red Color"/>
+                <Label Text="Red Color"
+                       TextColor="Red"
+                       FontAttributes="Bold"/>
                 <Slider
                     x:Name="sldRed"
                     MaximumTrackColor="{StaticResource Tertiary}"
@@ -33,7 +35,9 @@
                     ThumbColor="{StaticResource Primary}"
                     ValueChanged="Slider_ValueChanged"/>
                 
-                <Label Text="Green Color"/>
+                <Label Text="Green Color"
+                        TextColor="Green"
+                       FontAttributes="Bold"/>
                 <Slider
                     x:Name="sldGreen"
                     MaximumTrackColor="{StaticResource Tertiary}"
@@ -41,7 +45,9 @@
                     ThumbColor="{StaticResource Primary}"
                     ValueChanged="Slider_ValueChanged"/>
                 
-                <Label Text="Blue Color"/>
+                <Label Text="Blue Color"
+                        TextColor="Blue"
+                       FontAttributes="Bold"/>
                 <Slider
                     x:Name="sldBlue"
                     MaximumTrackColor="{StaticResource Tertiary}"
@@ -58,14 +64,7 @@
                             FontSize="Medium"
                             TextColor="White"
                             VerticalOptions="Center"/>
-                        <ImageButton
-                            Margin="200,0,0,0"
-                            HeightRequest="25"
-                            Source="dotnet_bot.png"
-                            VerticalOptions="Center"
-                            HorizontalOptions="End"
-                            WidthRequest="25"
-                            Clicked="ImageButton_Clicked"/>
+                        
                     </HorizontalStackLayout>
                 </Frame>
                 

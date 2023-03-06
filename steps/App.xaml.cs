@@ -14,8 +14,8 @@ public partial class App : Application
 
 		_movieRepository = movieRepo;
 
-		//MainPage = new NavigationPage(new MainPage());
+		MainPage = new NavigationPage(new MainPage());
 
-		MainPage = new Movies();
-    }
+		//MainPage = new Movies();
+	}
 }

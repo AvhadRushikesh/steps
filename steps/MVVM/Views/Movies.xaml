@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:steps.MVVM.ViewModels"
              x:Class="steps.MVVM.Views.Movies"
              Title="Movies">
 
@@ -15,7 +16,8 @@
                     FontSize="Small"
                     VerticalOptions="Center"
                     TextColor="Green"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+            Clicked="SetBackground"/>
 
         <SearchBar 
             Grid.Row="1"
@@ -28,7 +30,7 @@
                 <Entry 
                     x:Name="Id"
                     Placeholder="ID"
-                    Text="0"/>
+                    Text="{Binding AddMovie.Id}"/>
                 <Entry
                     x:Name="Name"
                     Placeholder="Movie Name"
@@ -61,31 +63,47 @@
               BackgroundColor="White">
 
             <CollectionView
-                ItemsSource="{Binding movies}">
+                ItemsSource="{Binding movies}"
+                SelectionMode="Single"
+                SelectedItem="{Binding AddMovie}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="*,*,*,*,*" >
-                            <Label 
+
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Text="Delete"
+                                        BackgroundColor="DarkRed"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+
+
+                            <Grid ColumnDefinitions="*,*,*,*,*" >
+                                <Label
                                 Grid.Column="0"
-                                Text="{Binding Id}" 
+                                Text="{Binding Id}"
                                 TextColor="Black"/>
-                            <Label 
+                                <Label 
                                 Grid.Column="1"
                                 Text="{Binding Name}" 
                                 TextColor="Black"/>
-                            <Label 
+                                <Label 
                                 Grid.Column="2"
                                 Text="{Binding Description}" 
                                 TextColor="Black"/>
-                            <Label 
+                                <Label 
                                 Grid.Column="3"
                                 Text="{Binding Rating}" 
                                 TextColor="Black"/>
-                            <Label 
+                                <Label 
                                 Grid.Column="4"
                                 Text="{Binding ImageUrl}" 
                                 TextColor="Black"/>
-                        </Grid>
+                            </Grid>
+                        </SwipeView>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

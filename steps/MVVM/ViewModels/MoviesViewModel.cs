@@ -21,6 +21,8 @@ namespace steps.MVVM.ViewModels
 
         public ICommand AddOrUpdateCommand { get; set; }
 
+        public ICommand DeleteCommand { get; set; }
+
         public MoviesViewModel()
         {
             Refresh();
@@ -32,6 +34,11 @@ namespace steps.MVVM.ViewModels
                 Console.Write(App._movieRepository.StatusMsg);
                 GenerateNewMovie();
                 Refresh();
+            });
+
+            DeleteCommand = new Command(() =>
+            {
+                App._movieRepository.Delete(AddMovie.Id);
             });
         }
 
@@ -67,5 +74,7 @@ namespace steps.MVVM.ViewModels
         {
 
         }
+
+
     }
 }
