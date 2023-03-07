@@ -1,6 +1,5 @@
 ﻿
 using steps.MVVM.Views;
-using steps.NewFolder.Views;
 using steps.Repositories;
 
 namespace steps;
@@ -14,8 +13,9 @@ public partial class App : Application
 
 		_movieRepository = movieRepo;
 
-		MainPage = new NavigationPage(new MainPage());
+		//MainPage = new NavigationPage(new MainPage());
 
+		MainPage = new steps.MVVM.Views.Tab();
 		//MainPage = new Movies();
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui;
 using steps.MVVM.Views;
-using steps.NewFolder.Views;
 
 namespace steps;
 

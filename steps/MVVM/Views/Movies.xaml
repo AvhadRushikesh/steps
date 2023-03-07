@@ -5,10 +5,11 @@
              x:Class="steps.MVVM.Views.Movies"
              Title="Movies">
 
-    <Grid RowDefinitions=".1*,.05*,.3*,.4*"
-          BackgroundColor="AliceBlue">
+    <Grid RowDefinitions=".2*,.9*"
+          BackgroundColor="AliceBlue"
+          >
 
-        <Button 
+        <!--<Button 
             Grid.Row="0"
             Text="Set Background Color"
                     BackgroundColor="Yellow"
@@ -17,15 +18,27 @@
                     VerticalOptions="Center"
                     TextColor="Green"
                     FontAttributes="Bold"
-            Clicked="SetBackground"/>
+            Clicked="SetBackground"/>-->
 
-        <SearchBar 
-            Grid.Row="1"
-            Placeholder="Search Movie Name" 
-            FontAttributes="Bold"
-            TextColor="Black"/>
+        <Grid Grid.Row="0">
+            <VerticalStackLayout>
+                <SearchBar 
+                    Placeholder="Search Movie Name" 
+                    PlaceholderColor="Black"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                <Button Text="+" 
+                        WidthRequest="50"
+                        HorizontalOptions="End"
+                        CornerRadius="100"
+                        BackgroundColor="DarkBlue"
+                        FontAttributes="Bold"
+                        Clicked="AddMovie_Clicked"
+                        FontSize="Large"/>
+            </VerticalStackLayout>
+        </Grid>
 
-        <Grid Grid.Row="2"
+        <!--<Grid Grid.Row="2"
               BackgroundColor="Navy">
             <VerticalStackLayout>
                 <Entry 
@@ -59,10 +72,10 @@
                     HorizontalOptions="Center"                    
                     Command="{Binding AddOrUpdateCommand}"/>
             </VerticalStackLayout>
-        </Grid>
+        </Grid>-->
 
-        <Grid Grid.Row="3"
-              BackgroundColor="AliceBlue">
+        <Grid Grid.Row="1"
+              BackgroundColor="White" >
 
             <CollectionView
                 ItemsSource="{Binding movies}"

@@ -4,7 +4,7 @@ using System;
 using CommunityToolkit.Maui.Alerts;
 using steps.MVVM.Views;
 
-namespace steps.NewFolder.Views;
+namespace steps.MVVM.Views;
 
 public partial class Home : ContentPage
 {

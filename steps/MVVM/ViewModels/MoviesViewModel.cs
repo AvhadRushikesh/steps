@@ -39,6 +39,7 @@ namespace steps.MVVM.ViewModels
             DeleteCommand = new Command(() =>
             {
                 App._movieRepository.Delete(AddMovie.Id);
+                Refresh();
             });
         }
 

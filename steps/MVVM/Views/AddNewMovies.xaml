@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:steps.MVVM.ViewModels"
+             x:Class="steps.MVVM.Views.AddNewMovies"
+             Title="AddNewMovies">
+
+    <Grid RowDefinitions=".1*,.7*,.2*"
+          BackgroundColor="White">
+        <Label Text="Add New Movies" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               FontSize="Large"/>
+
+        <Grid Grid.Row="1"
+              BackgroundColor="AliceBlue">
+            <VerticalStackLayout Spacing="20">
+                <Entry 
+                    x:Name="Id"
+                    Placeholder="ID"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Id}"/>
+                <Entry
+                    x:Name="Name"
+                    Placeholder="Movie Name"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Name}"/>
+                <Entry
+                    x:Name="Description"
+                    Placeholder="Movie Description"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Description}"/>
+                <Entry
+                    x:Name="Rating"
+                    Placeholder="Movie Rating"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Rating}"/>
+                <Entry
+                    x:Name="Image"
+                    Placeholder="http://image.url"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Image}"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="2"
+                             Spacing="5">            
+        <Button 
+                x:Name="AddOrUpdate"
+                Text="Add"
+                BackgroundColor="DarkGreen"
+                FontAttributes="Bold"
+                FontSize="Large"
+                WidthRequest="350"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"                    
+                Command="{Binding AddOrUpdateCommand}"/>
+            <Button
+                Text="Back"
+                BackgroundColor="DarkRed"
+                FontAttributes="Bold"
+                FontSize="Large"
+                WidthRequest="350"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
