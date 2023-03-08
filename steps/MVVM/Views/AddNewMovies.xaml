@@ -5,8 +5,13 @@
              x:Class="steps.MVVM.Views.AddNewMovies"
              Title="AddNewMovies">
 
-    <Grid RowDefinitions=".1*,.7*,.2*"
-          BackgroundColor="White">
+    <Grid 
+        x:Name="mainGrid"
+        RowDefinitions=".1*,.7*,.2*"
+        BackgroundColor="White">
+    <!--<Grid RowDefinitions=".1*,.7*,.2*"
+          BackgroundColor="{Binding Addcolor.BackColor}">-->
+        
         <Label Text="Add New Movies" 
                VerticalOptions="Center"
                HorizontalOptions="Center"
@@ -72,7 +77,8 @@
                 WidthRequest="350"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"                    
-                Command="{Binding AddOrUpdateCommand}"/>
+                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"/>
+                <!--Command="{Binding AddOrUpdateCommand}"/>-->
             <Button
                 Text="Back"
                 BackgroundColor="DarkRed"

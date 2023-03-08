@@ -11,6 +11,8 @@ namespace steps
     {
         private const string DBFileName = "SQLite.db3";
 
+        private const string ColorFileName = "color.db3";
+
 
         public const SQLiteOpenFlags Flags =
             SQLiteOpenFlags.ReadWrite |
@@ -23,6 +25,14 @@ namespace steps
             get
             {
                 return Path.Combine(FileSystem.AppDataDirectory, DBFileName);
+            }
+        }
+
+        public static string DatabasePathforcolor
+        {
+            get
+            {
+                return Path.Combine(FileSystem.AppDataDirectory, ColorFileName);
             }
         }
     }

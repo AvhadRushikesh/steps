@@ -63,7 +63,7 @@ namespace steps.MVVM.ViewModels
                 .RuleFor(x => x.Rating, f => f.Person.FullName)
                 .RuleFor(x => x.ImageUrl, f => f.Person.FullName)
                 .Generate();
-            App._movieRepository.AddOrUpdate(AddMovie);
+            Refresh();
         }
 
         private void Refresh()

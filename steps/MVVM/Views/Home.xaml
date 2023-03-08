@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:steps.MVVM.ViewModels"
              x:Class="steps.MVVM.Views.Home">
 
   
@@ -11,7 +12,16 @@
         <Color x:Key="Tertiary">#705c2e</Color>
     </ContentPage.Resources>
 
-    <Grid x:Name="Container" BackgroundColor="Violet" RowDefinitions=".2*,.8*">
+    <!--<Grid 
+        x:Name="Container" 
+        BackgroundColor="Violet" 
+        RowDefinitions=".2*,.8*">-->
+
+    <Grid 
+        x:Name="Container" 
+        BackgroundColor="{Binding Addcolor.BackColor}" 
+        RowDefinitions=".2*,.8*">
+        
         <Label Text="Save Color as Background Color for Application" 
                VerticalOptions="Center"
                HorizontalOptions="Center"
@@ -76,8 +86,9 @@
                 <Button x:Name="SaveBackground"
                         BackgroundColor="PeachPuff"
                         Text="Save as background Color"
-                        Clicked="SaveBackGround" 
+                        Clicked="SaveBackGround"
                         FontAttributes="Bold"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:BGColorViewModel}},Path=AddColorCommand}"
                         FontSize="Medium"
                         TextColor="Orange"/>
 

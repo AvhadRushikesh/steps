@@ -6,8 +6,10 @@
              Title="Movies">
 
     <Grid RowDefinitions=".2*,.9*"
-          BackgroundColor="AliceBlue"
-          >
+          BackgroundColor="AliceBlue">
+    <!--<Grid RowDefinitions=".2*,.9*"
+          BackgroundColor="{Binding Addcolor.BackColor}" >--> 
+         
 
         <!--<Button 
             Grid.Row="0"

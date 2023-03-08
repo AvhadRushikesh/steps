@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System;
 using CommunityToolkit.Maui.Alerts;
 using steps.MVVM.Views;
+using steps.MVVM.ViewModels;
+using Microsoft.Maui.Graphics.Converters;
 
 namespace steps.MVVM.Views;
 
@@ -13,6 +15,8 @@ public partial class Home : ContentPage
     public Home()
 	{
 		InitializeComponent();
+
+        BindingContext = new BGColorViewModel();
 	}
 
     #region Comment
@@ -59,12 +63,18 @@ public partial class Home : ContentPage
 
     #endregion
 
-    private async void SaveBackGround(object sender, EventArgs e)
+    private void SaveBackGround(object sender, EventArgs e)
     {
-        //Container.BackgroundColor = hexValue;
-
         var testget = hexValue;
 
-        await Navigation.PushAsync(new Movies());
+        // ColorTypeConverter converter = new ColorTypeConverter();
+        // Color color = (Color)(converter.ConvertFromInvariantString(testget));
+
+
+        // Container.BackgroundColor = color;
+
+
+
+        //await Navigation.PushAsync(new Movies());
     }
 }

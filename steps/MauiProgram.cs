@@ -20,6 +20,8 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MovieRepository>();
 
+		builder.Services.AddSingleton<BGColorRepo>();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

@@ -9,5 +9,7 @@ public partial class AddNewMovies : ContentPage
 		InitializeComponent();
 
         BindingContext = new MoviesViewModel();
+
+		//BindingContext = new BGColorViewModel();
     }
 }

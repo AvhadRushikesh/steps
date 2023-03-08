@@ -10,6 +10,8 @@ public partial class Movies : ContentPage
 		InitializeComponent();
 
         BindingContext = new MoviesViewModel();
+
+        //BindingContext = new BGColorViewModel();
     }
 
     private async void SetBackground(object sender, EventArgs e)
