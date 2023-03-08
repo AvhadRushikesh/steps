@@ -26,7 +26,7 @@
                     Placeholder="ID"
                     PlaceholderColor="Black"
                     TextColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Id}"/>
                 <Entry
@@ -34,7 +34,7 @@
                     Placeholder="Movie Name"
                     PlaceholderColor="Black"
                     TextColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Name}"/>
                 <Entry
@@ -42,7 +42,7 @@
                     Placeholder="Movie Description"
                     PlaceholderColor="Black"
                     TextColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Description}"/>
                 <Entry
@@ -50,7 +50,7 @@
                     Placeholder="Movie Rating"
                     PlaceholderColor="Black"
                     TextColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Rating}"/>
                 <Entry
@@ -58,18 +58,21 @@
                     Placeholder="http://image.url"
                     PlaceholderColor="Black"
                     TextColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Image}"/>
                 
                 <HorizontalStackLayout >
                     <CheckBox 
-                        HorizontalOptions="Start" 
+                        HorizontalOptions="Start"
+                        Color="HotPink"
                         BindingContext="{Binding AddMovie.isFavorite}"/>
                     <Label 
                         VerticalOptions="Center"
-                        FontAttributes="Bold"
-                        Text="IS Favorite" />
+                        FontAttributes="Italic"
+                        FontSize="Medium"
+                        Text="IS Favorite"
+                        TextColor="Black"/>
                 </HorizontalStackLayout>
                
                 
@@ -80,25 +83,29 @@
 
         <VerticalStackLayout Grid.Row="2"
                              Spacing="5">            
-        <Button 
-                x:Name="AddOrUpdate"
-                Text="Add"
-                BackgroundColor="DarkGreen"
-                FontAttributes="Bold"
-                FontSize="Large"
-                WidthRequest="350"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"                    
-                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"/>
+        <Button
+            x:Name="AddOrUpdate"
+            Text="Add"
+            TextColor="White"
+            BackgroundColor="DarkGreen"
+            FontAttributes="Bold"
+            FontSize="Large"
+            WidthRequest="350"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"                    
+            Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"/>
                 <!--Command="{Binding AddOrUpdateCommand}"/>-->
             <Button
                 Text="Back"
+                TextColor="White"
                 BackgroundColor="DarkRed"
                 FontAttributes="Bold"
                 FontSize="Large"
                 WidthRequest="350"
                 VerticalOptions="Center"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                Clicked="Back_Clicked" />
+            
         </VerticalStackLayout>
 
     </Grid>

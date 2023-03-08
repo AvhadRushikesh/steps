@@ -20,19 +20,17 @@ namespace steps.MVVM.ViewModels
 
         public BGColorViewModel()
         {
-            Refresh();
+            GetColorFromTable();
 
             AddColorCommand = new Command(async () =>
             {
                 App._colorRepo.AddOrUpdateColor(Addcolor);
-                Refresh();
+                GetColorFromTable();
             });
         }
 
-        //public void AddBackgroundColor()
 
-
-        public void Refresh()
+        public void GetColorFromTable()
         {
             Addcolor = App._colorRepo.Get(1);
 

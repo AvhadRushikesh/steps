@@ -12,4 +12,9 @@ public partial class AddNewMovies : ContentPage
 
 		//BindingContext = new BGColorViewModel();
     }
+
+    private async void Back_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

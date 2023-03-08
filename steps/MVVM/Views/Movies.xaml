@@ -7,18 +7,7 @@
 
     <Grid RowDefinitions=".2*,.9*"
           BackgroundColor="AliceBlue">
-         
-
-        <!--<Button 
-            Grid.Row="0"
-            Text="Set Background Color"
-                    BackgroundColor="Yellow"
-                    HorizontalOptions="Center"
-                    FontSize="Small"
-                    VerticalOptions="Center"
-                    TextColor="Green"
-                    FontAttributes="Bold"
-            Clicked="SetBackground"/>-->
+        
 
         <Grid Grid.Row="0">
             <VerticalStackLayout>
@@ -27,7 +16,8 @@
                     PlaceholderColor="Black"
                     FontAttributes="Bold"
                     TextColor="Black"/>
-                <Button Text="+" 
+                <Button Text="+"
+                        TextColor="White"
                         WidthRequest="50"
                         HorizontalOptions="End"
                         CornerRadius="100"
@@ -38,42 +28,6 @@
             </VerticalStackLayout>
         </Grid>
 
-        <!--<Grid Grid.Row="2"
-              BackgroundColor="Navy">
-            <VerticalStackLayout>
-                <Entry 
-                    x:Name="Id"
-                    Placeholder="ID"
-                    Text="{Binding AddMovie.Id}"/>
-                <Entry
-                    x:Name="Name"
-                    Placeholder="Movie Name"
-                    Text="{Binding AddMovie.Name}"/>
-                <Entry
-                    x:Name="Description"
-                    Placeholder="Movie Description"
-                    Text="{Binding AddMovie.Description}"/>
-                <Entry
-                    x:Name="Rating"
-                    Placeholder="Movie Rating"
-                    Text="{Binding AddMovie.Rating}"/>
-                <Entry
-                    x:Name="Image"
-                    Placeholder="http://image.url"
-                    Text="{Binding AddMovie.Image}"/>
-                <Button
-                    x:Name="AddOrUpdate"
-                    Text="Add"
-                    BackgroundColor="Aqua"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    WidthRequest="350"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"                    
-                    Command="{Binding AddOrUpdateCommand}"/>
-            </VerticalStackLayout>
-        </Grid>-->
-
         <Grid Grid.Row="1"
               BackgroundColor="White" >
 
@@ -81,6 +35,9 @@
                 ItemsSource="{Binding movies}"
                 SelectionMode="Single"
                 SelectedItem="{Binding AddMovie}">
+                <CollectionView.EmptyView>
+                    <Label Text="No data Found" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
@@ -94,18 +51,28 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
+                            <!--#region For Update Swipe Right -->
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Text="Update"                                        
+                                        BackgroundColor="Yellow"
+                                        Clicked="AddMovie_Clicked" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <!--#endregion-->
+
 
                             <Grid 
                                 Margin="15,15,20,15"
                                 ColumnDefinitions=".2*,.3*,.2*,.2*,.1*">
                                 <Frame
-                                    Grid.RowSpan="2"
-                                    BorderColor="DarkCyan"
+                                    Grid.ColumnSpan="5"
+                                    BorderColor="DarkBlue"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    WidthRequest="700"
-                                    HeightRequest="70"
-                                    >
+                                    WidthRequest="900"
+                                    HeightRequest="70" >
                                     <Frame.Background>
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Offset="0" Color="#F8F9FA" />
@@ -116,34 +83,30 @@
 
                                 </Frame>
 
-                                <!--<Label
-                                   Grid.Column="0"
-                                   Text="{Binding Id}"
-                                   TextColor="Black"/>-->
-                               
-                                <Image Grid.Column="0"
-                                 Source="{Binding StringFormat=ImageUrl}" />
-                            
+
+                                <Image 
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding ImageUrl}" />
+
                                 <Label 
-                                Grid.Column="1"
-                                Text="{Binding Name}" 
-                                TextColor="Black"/>
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    Text="{Binding Name}" 
+                                    TextColor="Black"/>
                                 <Label 
-                                Grid.Column="2"
-                                Text="{Binding Description}" 
-                                TextColor="Black"/>
+                                    Grid.Column="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Description}" 
+                                    TextColor="Black"/>
                                 <Label 
-                                Grid.Column="3"
-                                Text="{Binding Rating}" 
-                                TextColor="Black"/>
-                                <!--<CheckBox 
-                                Grid.Column="3"
-                                BindingContext="{Binding isFavorite}" />-->
-                            
-                                <!--<Label 
-                                Grid.Column="4"
-                                Text="{Binding ImageUrl}"                                
-                                TextColor="Black"/>-->
+                                    Grid.Column="3"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Rating}" 
+                                    TextColor="Black"/>
 
                             </Grid>
                         </SwipeView>
