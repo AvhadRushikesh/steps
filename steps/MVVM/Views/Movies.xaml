@@ -7,8 +7,6 @@
 
     <Grid RowDefinitions=".2*,.9*"
           BackgroundColor="AliceBlue">
-    <!--<Grid RowDefinitions=".2*,.9*"
-          BackgroundColor="{Binding Addcolor.BackColor}" >--> 
          
 
         <!--<Button 
@@ -97,11 +95,35 @@
                             </SwipeView.LeftItems>
 
 
-                            <Grid ColumnDefinitions="*,*,*,*,*">
-                                <Label
-                                Grid.Column="0"
-                                Text="{Binding Id}"
-                                TextColor="Black"/>
+                            <Grid 
+                                Margin="15,15,20,15"
+                                ColumnDefinitions=".2*,.3*,.2*,.2*,.1*">
+                                <Frame
+                                    Grid.RowSpan="2"
+                                    BorderColor="DarkCyan"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="700"
+                                    HeightRequest="70"
+                                    >
+                                    <Frame.Background>
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Offset="0" Color="#F8F9FA" />
+                                            <GradientStop Offset="0" Color="#DEE2E6" />
+
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+
+                                </Frame>
+
+                                <!--<Label
+                                   Grid.Column="0"
+                                   Text="{Binding Id}"
+                                   TextColor="Black"/>-->
+                               
+                                <Image Grid.Column="0"
+                                 Source="{Binding StringFormat=ImageUrl}" />
+                            
                                 <Label 
                                 Grid.Column="1"
                                 Text="{Binding Name}" 
@@ -114,10 +136,15 @@
                                 Grid.Column="3"
                                 Text="{Binding Rating}" 
                                 TextColor="Black"/>
-                                <Label 
+                                <!--<CheckBox 
+                                Grid.Column="3"
+                                BindingContext="{Binding isFavorite}" />-->
+                            
+                                <!--<Label 
                                 Grid.Column="4"
-                                Text="{Binding ImageUrl}" 
-                                TextColor="Black"/>
+                                Text="{Binding ImageUrl}"                                
+                                TextColor="Black"/>-->
+
                             </Grid>
                         </SwipeView>
 

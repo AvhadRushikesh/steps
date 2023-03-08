@@ -12,6 +12,6 @@ public partial class MainPage : ContentPage
 
     private async void Login_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Movies());
+        await Navigation.PushAsync(new steps.MVVM.Views.Tab());
     }
 }

@@ -19,9 +19,9 @@ public partial class App : Application
 
 		_colorRepo = colorrepo;
 
-		//MainPage = new NavigationPage(new MainPage());
+		MainPage = new NavigationPage(new MainPage());
 
-		MainPage = new steps.MVVM.Views.Tab();
+		//MainPage = new steps.MVVM.Views.Tab();
 		//MainPage = new Movies();
 	}
 }

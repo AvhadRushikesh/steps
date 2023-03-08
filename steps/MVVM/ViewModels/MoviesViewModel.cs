@@ -61,8 +61,9 @@ namespace steps.MVVM.ViewModels
                 .RuleFor(x => x.Name, f => f.Person.FullName)
                 .RuleFor(x => x.Description, f => f.Person.Address.Street)
                 .RuleFor(x => x.Rating, f => f.Person.FullName)
-                .RuleFor(x => x.ImageUrl, f => f.Person.FullName)
+                .RuleFor(x => x.ImageUrl, f => f.Person.Website)                
                 .Generate();
+            AddMovie.isFavorite = true;
             Refresh();
         }
 

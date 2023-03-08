@@ -61,6 +61,18 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     Text="{Binding AddMovie.Image}"/>
+                
+                <HorizontalStackLayout >
+                    <CheckBox 
+                        HorizontalOptions="Start" 
+                        BindingContext="{Binding AddMovie.isFavorite}"/>
+                    <Label 
+                        VerticalOptions="Center"
+                        FontAttributes="Bold"
+                        Text="IS Favorite" />
+                </HorizontalStackLayout>
+               
+                
 
             </VerticalStackLayout>
 

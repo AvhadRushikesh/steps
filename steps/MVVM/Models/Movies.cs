@@ -22,6 +22,8 @@ namespace steps.MVVM.Models
 
         public string Rating { get; set; }
 
-        public string ImageUrl { get; set; } 
+        public string ImageUrl { get; set; }
+
+        public bool isFavorite { get; set; }
     }
 }
