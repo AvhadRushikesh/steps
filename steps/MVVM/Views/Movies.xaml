@@ -5,11 +5,16 @@
              x:Class="steps.MVVM.Views.Movies"
              Title="Movies">
 
-    <Grid RowDefinitions=".2*,.9*"
-          BackgroundColor="AliceBlue">
-        
+    <!--<Grid RowDefinitions=".2*,.9*"
+          BackgroundColor="AliceBlue">-->
 
-        <Grid Grid.Row="0">
+    <Grid 
+        x:Name="MainGridofPage"
+        RowDefinitions=".2*,.9*">
+        <!--BackgroundColor="{Binding Getcolor.BackColor}">-->
+
+
+    <Grid Grid.Row="0">
             <VerticalStackLayout>
                 <SearchBar 
                     Placeholder="Search Movie Name" 
@@ -28,8 +33,9 @@
             </VerticalStackLayout>
         </Grid>
 
-        <Grid Grid.Row="1"
-              BackgroundColor="White" >
+        <Grid
+            x:Name="CollectionViewGrid"
+            Grid.Row="1" >
 
             <CollectionView
                 ItemsSource="{Binding movies}"
@@ -46,6 +52,7 @@
                                 <SwipeItems>
                                     <SwipeItem
                                         Text="Delete"
+                                        IsVisible="True"
                                         BackgroundColor="DarkRed"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />
                                 </SwipeItems>

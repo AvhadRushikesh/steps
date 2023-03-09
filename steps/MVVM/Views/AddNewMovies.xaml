@@ -6,11 +6,8 @@
              Title="AddNewMovies">
 
     <Grid 
-        x:Name="mainGrid"
-        RowDefinitions=".1*,.7*,.2*"
-        BackgroundColor="White">
-    <!--<Grid RowDefinitions=".1*,.7*,.2*"
-          BackgroundColor="{Binding Addcolor.BackColor}">-->
+        x:Name="MainGridOfPage"
+        RowDefinitions=".1*,.7*,.2*">
         
         <Label Text="Add New Movies" 
                VerticalOptions="Center"

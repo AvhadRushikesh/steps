@@ -5,6 +5,8 @@ using CommunityToolkit.Maui.Alerts;
 using steps.MVVM.Views;
 using steps.MVVM.ViewModels;
 using Microsoft.Maui.Graphics.Converters;
+using steps.MVVM.Models;
+using System.Windows.Input;
 
 namespace steps.MVVM.Views;
 
@@ -12,12 +14,19 @@ public partial class Home : ContentPage
 {
     bool isRandom;
     string hexValue;
+
+    public BGColor Getcolor { get; set; }
+
+    public ICommand AddColorCommand { get; set; }
+
     public Home()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
+
+        GetColorFromTable();
 
         BindingContext = new BGColorViewModel();
-	}
+    }
 
     #region Comment
 
@@ -39,7 +48,7 @@ public partial class Home : ContentPage
     {
         Debug.WriteLine(color.ToString());
         btnRandom.BackgroundColor = color;
-        Container.Background = color;
+        MainGridOfPage.Background = color;
         hexValue = color.ToHex();
         lblHex.Text = hexValue;
     }
@@ -67,14 +76,21 @@ public partial class Home : ContentPage
     {
         var testget = hexValue;
 
-        // ColorTypeConverter converter = new ColorTypeConverter();
-        // Color color = (Color)(converter.ConvertFromInvariantString(testget));
+        var setcolor = new BGColor
+        {
+            Id = 1,
+            BackColor = testget
+        };
 
+        App._colorRepo.AddOrUpdateColor(setcolor);
+    }
 
-        // Container.BackgroundColor = color;
-
-
-
-        //await Navigation.PushAsync(new Movies());
+    public void GetColorFromTable()
+    {
+        Getcolor = App._colorRepo.Get(1);
+        var seecolor = Getcolor.BackColor;
+        ColorTypeConverter converter = new ColorTypeConverter();
+        Color color = (Color)(converter.ConvertFromInvariantString(seecolor));
+        MainGridOfPage.BackgroundColor = color;
     }
 }
