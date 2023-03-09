@@ -3,48 +3,124 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:steps.MVVM.ViewModels"
              x:Class="steps.MVVM.Views.Movies"
-             Title="Movies">
-
-    <!--<Grid RowDefinitions=".2*,.9*"
-          BackgroundColor="AliceBlue">-->
+             Title="Movies">    
 
     <Grid 
         x:Name="MainGridofPage"
         RowDefinitions=".2*,.9*">
-        <!--BackgroundColor="{Binding Getcolor.BackColor}">-->
 
 
-    <Grid Grid.Row="0">
+        <!--#region NewRegion -->
+        <!--<Frame 
+            Grid.Row="1"
+            HeightRequest="100"
+            WidthRequest="100"
+            BackgroundColor="Black"
+            IsVisible="True" 
+            Opacity="10">
+        <Grid
+              BackgroundColor="AliceBlue">
+            <VerticalStackLayout Spacing="20">
+                <Entry
+                    x:Name="Id"
+                    Placeholder="ID"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Id}"/>
+                <Entry
+                    x:Name="Name"
+                    Placeholder="Movie Name"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Name}"/>
+                <Entry
+                    x:Name="Description"
+                    Placeholder="Movie Description"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Description}"/>
+                <Entry
+                    x:Name="Rating"
+                    Placeholder="Movie Rating"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Rating}"/>
+                <Entry
+                    x:Name="Image"
+                    Placeholder="http://image.url"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.Image}"/>
+                <HorizontalStackLayout >
+                    <CheckBox 
+                        HorizontalOptions="Start"
+                        Color="HotPink"
+                        BindingContext="{Binding AddMovie.isFavorite}"/>
+                    <Label 
+                        VerticalOptions="Center"
+                        FontAttributes="Italic"
+                        FontSize="Medium"
+                        Text="IS Favorite"
+                        TextColor="Black"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+        </Frame>-->
+        <!--#endregion-->
+
+
+        <Grid
+        Grid.Row="0">
             <VerticalStackLayout>
                 <SearchBar 
                     Placeholder="Search Movie Name" 
                     PlaceholderColor="Black"
                     FontAttributes="Bold"
                     TextColor="Black"/>
-                <Button Text="+"
-                        TextColor="White"
-                        WidthRequest="50"
-                        HorizontalOptions="End"
-                        CornerRadius="100"
-                        BackgroundColor="DarkBlue"
-                        FontAttributes="Bold"
-                        Clicked="AddMovie_Clicked"
-                        FontSize="Large"/>
+                <Button
+                    Text="+"
+                    TextColor="White"
+                    WidthRequest="50"
+                    HorizontalOptions="End"
+                    CornerRadius="100"
+                    BackgroundColor="DarkBlue"
+                    FontAttributes="Bold"
+                    Clicked="AddMovie_Clicked"
+                    FontSize="Large"/>
             </VerticalStackLayout>
         </Grid>
 
         <Grid
             x:Name="CollectionViewGrid"
+            
             Grid.Row="1" >
-
+            
             <CollectionView
                 ItemsSource="{Binding movies}"
                 SelectionMode="Single"
+                ItemTemplate="{StaticResource DataDictionry}"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>
                     <Label Text="No data Found" />
                 </CollectionView.EmptyView>
+                
+                
                 <CollectionView.ItemTemplate>
+
+
+                    <!--#region Data Template Resource Dictionary--> 
+                  
+
                     <DataTemplate>
 
                         <SwipeView>
@@ -52,17 +128,19 @@
                                 <SwipeItems>
                                     <SwipeItem
                                         Text="Delete"
+                                        IconImageSource="fontello.ttf"
                                         IsVisible="True"
                                         BackgroundColor="DarkRed"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
-                            <!--#region For Update Swipe Right -->
+                            <!--#region For Update Swipe Right--> 
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem
-                                        Text="Update"                                        
+                                        Text="Update"
+                                        IconImageSource="fontello.ttf"
                                         BackgroundColor="Yellow"
                                         Clicked="AddMovie_Clicked" />
                                 </SwipeItems>
@@ -84,42 +162,46 @@
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Offset="0" Color="#F8F9FA" />
                                             <GradientStop Offset="0" Color="#DEE2E6" />
-
                                         </LinearGradientBrush>
                                     </Frame.Background>
-
                                 </Frame>
-
 
                                 <Image 
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     Source="{Binding ImageUrl}" />
-
                                 <Label 
                                     Grid.Column="1"
                                     VerticalOptions="Center"
                                     Text="{Binding Name}" 
-                                    TextColor="Black"/>
+                                    TextColor="Black" />
                                 <Label 
                                     Grid.Column="2"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     Text="{Binding Description}" 
-                                    TextColor="Black"/>
+                                    TextColor="Black" />
                                 <Label 
                                     Grid.Column="3"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     Text="{Binding Rating}" 
-                                    TextColor="Black"/>
+                                    TextColor="Black" />
 
                             </Grid>
                         </SwipeView>
 
                     </DataTemplate>
+                    
+                    <!--#endregion-->
+
+
+
                 </CollectionView.ItemTemplate>
+    
+    
+    
             </CollectionView>
 
         </Grid>

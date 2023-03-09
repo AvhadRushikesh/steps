@@ -4,49 +4,55 @@
              x:Class="steps.MainPage"
              >
 
-    <Grid x:Name="GridName" >
+    <Grid
+        x:Name="GridName" >
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,1"
-                                 EndPoint="1,0">
+            <LinearGradientBrush
+                StartPoint="0,1"
+                EndPoint="1,0" >
                 <GradientStopCollection>
-                    
                     <GradientStop Offset="0" Color="LightSkyBlue" />
                     <GradientStop Offset="40" Color="Blue" />
                     <GradientStop Offset="70" Color="DarkRed" />
                 </GradientStopCollection>
             </LinearGradientBrush>
         </Grid.Background>
-        
-        <VerticalStackLayout Spacing="20"
-                             HorizontalOptions="Center"
-                             VerticalOptions="Center">
-            
-        <Entry Placeholder="User Name"
-               PlaceholderColor="Black"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               TextColor="Black"
-               HorizontalTextAlignment="Center"
-               BackgroundColor="LightGray"
-               HeightRequest="50"
-               WidthRequest="200"/>
-        <Entry Placeholder="Password"
-               PlaceholderColor="Black"
-                VerticalOptions="Center"
-               HorizontalOptions="Center"
-               TextColor="Black"
-                HorizontalTextAlignment="Center"
-               BackgroundColor="LightGrey"
-               HeightRequest="50"
-               WidthRequest="200"/>
-            <Button Text="Login" 
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    TextColor="White"
-                    BackgroundColor="DarkGreen"
-                    Clicked="Login_Clicked"/>
 
+        <VerticalStackLayout
+            Spacing="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Entry
+                x:Name="UserEntry"
+                Placeholder="User Name"
+                PlaceholderColor="Black"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="LightGray"
+                HeightRequest="50"
+                WidthRequest="200"/>
+            <Entry
+                x:Name="PasswordEntry"
+                Placeholder="Password"
+                PlaceholderColor="Black"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                HorizontalTextAlignment="Center"
+                BackgroundColor="LightGrey"
+                HeightRequest="50"
+                WidthRequest="200"/>
+            <Button
+                Text="Login" 
+                FontAttributes="Bold"
+                FontSize="Medium"
+                TextColor="White"
+                BackgroundColor="DarkGreen"
+                Clicked="Login_Clicked"/>
         </VerticalStackLayout>
+        
     </Grid>
 
 </ContentPage>
