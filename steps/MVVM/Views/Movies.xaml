@@ -10,14 +10,41 @@
         RowDefinitions=".2*,.9*">
 
 
-        <!--#region NewRegion-->
+       
+
 
         <Grid
-                x:Name="UpdateGrid"
-                Grid.Row="1"
-                IsVisible="False"
-                Grid.RowSpan="2"
-                VerticalOptions="Center">
+            Grid.Row="0">
+            <VerticalStackLayout>
+                <SearchBar
+                    Placeholder="Search Movie Name"
+                    PlaceholderColor="Black"
+                    FontAttributes="Italic"
+                    Text="{Binding SearchBarText}"
+                    TextColor="Black" />
+                    <!--Text="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=TextSearch}"-->
+                <Button
+                    Text="+"
+                    TextColor="White"
+                    WidthRequest="50"
+                    HorizontalOptions="End"
+                    CornerRadius="100"
+                    BackgroundColor="DarkBlue"
+                    FontAttributes="Bold"
+                    Clicked="AddMovie_Clicked"
+                    FontSize="Large" />
+            </VerticalStackLayout>
+        </Grid>
+
+
+        <!--#region Update Grid-->
+
+        <Grid
+            x:Name="UpdateGrid"
+            Grid.Row="1"
+            IsVisible="False"
+            Grid.RowSpan="2"
+            VerticalOptions="Center">
             <VerticalStackLayout Spacing="20">
                 <Entry
                     x:Name="Id"
@@ -94,36 +121,19 @@
                     Clicked="CancelUpdate_Clicked"/>
             </VerticalStackLayout>
         </Grid>
+        
         <!--#endregion-->
 
 
-        <Grid
-            Grid.Row="0">
-            <VerticalStackLayout>
-                <SearchBar
-                    Placeholder="Search Movie Name" 
-                    PlaceholderColor="Black"
-                    FontAttributes="Italic"
-                    TextColor="Black"/>
-                <Button
-                    Text="+"
-                    TextColor="White"
-                    WidthRequest="50"
-                    HorizontalOptions="End"
-                    CornerRadius="100"
-                    BackgroundColor="DarkBlue"
-                    FontAttributes="Bold"
-                    Clicked="AddMovie_Clicked"
-                    FontSize="Large"/>
-            </VerticalStackLayout>
-        </Grid>
+
+
 
         <Grid
             x:Name="CollectionViewGrid"            
             Grid.Row="1" >
             
             <CollectionView
-                ItemsSource="{Binding movies}"
+                ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=movies}"
                 SelectionMode="Single"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>

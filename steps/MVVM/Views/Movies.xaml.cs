@@ -15,9 +15,9 @@ public partial class Movies : ContentPage
 	{
 		InitializeComponent();
 
-        GetColorFromTable();
-
         BindingContext = new MoviesViewModel();
+
+        GetColorFromTable();
     }
 
     private async void SetBackground(object sender, EventArgs e)
