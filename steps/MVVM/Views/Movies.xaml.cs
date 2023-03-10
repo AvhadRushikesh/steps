@@ -25,9 +25,12 @@ public partial class Movies : ContentPage
         await Navigation.PushAsync(new Home());
     }
 
-    private async void AddMovie_Clicked(object sender, EventArgs e)
+    private void AddMovie_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddNewMovies());
+        // await Navigation.PushAsync(new AddNewMovies());
+        AddOrUpdate.Text = "Add";
+        CollectionViewGrid.IsVisible = false;
+        UpdateGrid.IsVisible = true;
     }
 
     public void GetColorFromTable()

@@ -88,6 +88,7 @@ namespace steps.MVVM.ViewModels
                 App._movieRepository.Delete(AddMovie.Id);
                 Refresh();
             });
+            // Refresh();
         }
 
         public void GenerateNewMovie()
@@ -97,8 +98,8 @@ namespace steps.MVVM.ViewModels
                 .RuleFor(x => x.Description, "")
                 .RuleFor(x => x.Rating, "")
                 .RuleFor(x => x.ImageUrl, "")
+                .RuleFor(x => x.isFavorite, false)
                 .Generate();
-            AddMovie.isFavorite = true;
             Refresh();
         }
 
