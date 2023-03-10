@@ -10,16 +10,14 @@
         RowDefinitions=".2*,.9*">
 
 
-        <!--#region NewRegion -->
-        <!--<Frame 
-            Grid.Row="1"
-            HeightRequest="100"
-            WidthRequest="100"
-            BackgroundColor="Black"
-            IsVisible="True" 
-            Opacity="10">
+        <!--#region NewRegion-->
+
         <Grid
-              BackgroundColor="AliceBlue">
+                x:Name="UpdateGrid"
+                Grid.Row="1"
+                IsVisible="False"
+                Grid.RowSpan="2"
+                VerticalOptions="Center">
             <VerticalStackLayout Spacing="20">
                 <Entry
                     x:Name="Id"
@@ -73,19 +71,39 @@
                         Text="IS Favorite"
                         TextColor="Black"/>
                 </HorizontalStackLayout>
+                <Button
+                    x:Name="AddOrUpdate"
+                    Text="Add"
+                    TextColor="White"
+                    BackgroundColor="DarkGreen"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    WidthRequest="350"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"                    
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"/>
+                <Button
+                    Text="Cancel"
+                    TextColor="White"
+                    BackgroundColor="DarkRed"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    WidthRequest="350"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Clicked="CancelUpdate_Clicked"/>
             </VerticalStackLayout>
         </Grid>
-        </Frame>-->
         <!--#endregion-->
 
 
         <Grid
-        Grid.Row="0">
+            Grid.Row="0">
             <VerticalStackLayout>
-                <SearchBar 
+                <SearchBar
                     Placeholder="Search Movie Name" 
                     PlaceholderColor="Black"
-                    FontAttributes="Bold"
+                    FontAttributes="Italic"
                     TextColor="Black"/>
                 <Button
                     Text="+"
@@ -101,14 +119,12 @@
         </Grid>
 
         <Grid
-            x:Name="CollectionViewGrid"
-            
+            x:Name="CollectionViewGrid"            
             Grid.Row="1" >
             
             <CollectionView
                 ItemsSource="{Binding movies}"
                 SelectionMode="Single"
-                ItemTemplate="{StaticResource DataDictionry}"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>
                     <Label Text="No data Found" />
@@ -142,7 +158,7 @@
                                         Text="Update"
                                         IconImageSource="fontello.ttf"
                                         BackgroundColor="Yellow"
-                                        Clicked="AddMovie_Clicked" />
+                                        Clicked="Update_Clicked" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <!--#endregion-->
@@ -166,23 +182,29 @@
                                     </Frame.Background>
                                 </Frame>
 
-                                <Image 
+                                <Label
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    IsVisible="False"
+                                    Text="{Binding Id}" />
+                                <Image
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     Source="{Binding ImageUrl}" />
-                                <Label 
+                                <Label
                                     Grid.Column="1"
                                     VerticalOptions="Center"
                                     Text="{Binding Name}" 
                                     TextColor="Black" />
-                                <Label 
+                                <Label
                                     Grid.Column="2"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     Text="{Binding Description}" 
                                     TextColor="Black" />
-                                <Label 
+                                <Label
                                     Grid.Column="3"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
