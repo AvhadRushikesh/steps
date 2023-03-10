@@ -11,17 +11,22 @@
                 StartPoint="0,1"
                 EndPoint="1,0" >
                 <GradientStopCollection>
-                    <GradientStop Offset="0" Color="LightSkyBlue" />
-                    <GradientStop Offset="40" Color="Blue" />
-                    <GradientStop Offset="70" Color="DarkRed" />
+                    <GradientStop Offset="0" Color="AliceBlue" />
+                    <GradientStop Offset="10" Color="Black" />
                 </GradientStopCollection>
             </LinearGradientBrush>
         </Grid.Background>
+
+        
 
         <VerticalStackLayout
             Spacing="20"
             HorizontalOptions="Center"
             VerticalOptions="Center">
+            
+            <Image Source="sm.jpg" />
+
+            
             <Entry
                 x:Name="UserEntry"
                 Placeholder="User Name"
@@ -41,7 +46,7 @@
                 HorizontalOptions="Center"
                 TextColor="Black"
                 HorizontalTextAlignment="Center"
-                BackgroundColor="LightGrey"
+                BackgroundColor="LightCyan"
                 HeightRequest="50"
                 WidthRequest="200"/>
             <Button

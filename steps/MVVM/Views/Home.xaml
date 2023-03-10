@@ -12,16 +12,11 @@
         <Color x:Key="Tertiary">#705c2e</Color>
     </ContentPage.Resources>
 
-    <!--<Grid 
-        x:Name="Container" 
-        BackgroundColor="Violet" 
-        RowDefinitions=".2*,.8*">-->
+    
 
     <Grid
         x:Name="MainGridOfPage"
         RowDefinitions=".2*,.8*">
-        
-        <!--BackgroundColor="{Binding Addcolor.BackColor}"-->
         
         <Label Text="Save Color as Background Color for Application" 
                VerticalOptions="Center"
@@ -96,7 +91,6 @@
             </VerticalStackLayout>
             
         </Frame>
-
         
 
     </Grid>
