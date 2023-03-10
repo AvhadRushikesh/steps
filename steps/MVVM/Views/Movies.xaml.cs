@@ -28,6 +28,9 @@ public partial class Movies : ContentPage
     private void AddMovie_Clicked(object sender, EventArgs e)
     {
         // await Navigation.PushAsync(new AddNewMovies());
+
+        SearchAndAddGrid.IsVisible = false;
+        Id.IsVisible = false;
         AddOrUpdate.Text = "Add";
         CollectionViewGrid.IsVisible = false;
         UpdateGrid.IsVisible = true;
@@ -45,6 +48,10 @@ public partial class Movies : ContentPage
 
     private void Update_Clicked(object sender, EventArgs e)
     {
+        SearchAndAddGrid.IsVisible = false;
+        AddOrUpdate.Text = "Update";
+        Id.IsVisible = true;
+        Id.IsReadOnly = true;
         CollectionViewGrid.IsVisible = false;
         UpdateGrid.IsVisible = true;
     }
@@ -53,5 +60,6 @@ public partial class Movies : ContentPage
     {
         UpdateGrid.IsVisible = false;
         CollectionViewGrid.IsVisible = true;
+        SearchAndAddGrid.IsVisible= true;
     }
 }
