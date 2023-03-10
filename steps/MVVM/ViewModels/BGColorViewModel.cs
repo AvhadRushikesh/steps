@@ -33,21 +33,6 @@ namespace steps.MVVM.ViewModels
         public void GetColorFromTable()
         {
             Addcolor = App._colorRepo.Get(1);
-
-            //ColorTypeConverter converter = new ColorTypeConverter();
-            //Color color = (Color)(converter.ConvertFromInvariantString("#BE498A"));
-
-            //Addcolor = new BGColor
-            //{
-            //    Id = 1, // Addcolor.Id,
-            //    BackColor = "#BE498A"//color.ToString() //Addcolor.BackColor
-
-            //};
-
-
-            // var idd = Addcolor.Id;
-            // var colname = Addcolor.BackColor.ToString();
-
         }
     }
 }

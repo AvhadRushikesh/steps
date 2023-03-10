@@ -15,8 +15,6 @@ public partial class AddNewMovies : ContentPage
         GetColorFromTable();
 
         BindingContext = new MoviesViewModel();
-
-		//BindingContext = new BGColorViewModel();
     }
 
     private async void Back_Clicked(object sender, EventArgs e)
@@ -32,5 +30,4 @@ public partial class AddNewMovies : ContentPage
         Color color = (Color)(converter.ConvertFromInvariantString(seecolor));
         MainGridOfPage.BackgroundColor = color;
     }
-
 }

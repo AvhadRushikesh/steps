@@ -28,9 +28,6 @@ public partial class Home : ContentPage
         BindingContext = new BGColorViewModel();
     }
 
-    #region Comment
-
-
     private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
         if (!isRandom)
@@ -69,8 +66,6 @@ public partial class Home : ContentPage
         isRandom = false;
     }
 
-
-    #endregion
 
     private void SaveBackGround(object sender, EventArgs e)
     {

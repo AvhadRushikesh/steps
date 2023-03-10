@@ -20,9 +20,7 @@
                     Placeholder="Search Movie Name"
                     PlaceholderColor="Black"
                     FontAttributes="Italic"
-                    Text="{Binding SearchBarText}"
                     TextColor="Black" />
-                    <!--Text="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=TextSearch}"-->
                 <Button
                     Text="+"
                     TextColor="White"
@@ -100,15 +98,16 @@
                 </HorizontalStackLayout>
                 <Button
                     x:Name="AddOrUpdate"
-                    Text="Add"
+                    Text="Update"
                     TextColor="White"
                     BackgroundColor="DarkGreen"
                     FontAttributes="Bold"
                     FontSize="Large"
                     WidthRequest="350"
                     VerticalOptions="Center"
-                    HorizontalOptions="Center"                    
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"/>
+                    HorizontalOptions="Center"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"
+                    Clicked="CancelUpdate_Clicked"/>
                 <Button
                     Text="Cancel"
                     TextColor="White"
@@ -156,7 +155,7 @@
                                         Text="Delete"
                                         IconImageSource="fontello.ttf"
                                         IsVisible="True"
-                                        BackgroundColor="DarkRed"
+                                        BackgroundColor="DarkRed"                                        
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
@@ -206,7 +205,7 @@
                                 <Label
                                     Grid.Column="1"
                                     VerticalOptions="Center"
-                                    Text="{Binding Name}" 
+                                    Text="{Binding Name}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="2"
@@ -218,7 +217,7 @@
                                     Grid.Column="3"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Rating}" 
+                                    Text="{Binding Rating}"
                                     TextColor="Black" />
 
                             </Grid>

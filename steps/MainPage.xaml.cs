@@ -17,9 +17,7 @@ public partial class MainPage : ContentPage
 
     public MainPage()
 	{
-		InitializeComponent();
-
-        
+		InitializeComponent();        
     }
 
     private async void Login_Clicked(object sender, EventArgs e)
@@ -27,7 +25,7 @@ public partial class MainPage : ContentPage
 
         await Navigation.PushAsync(new steps.MVVM.Views.Tab());
 
-        #region Login using API Credentials
+        #region Login using API Credentials Need to pass username and password in API
 
         //var userName = UserEntry.Text;
         //var Password = PasswordEntry.Text;

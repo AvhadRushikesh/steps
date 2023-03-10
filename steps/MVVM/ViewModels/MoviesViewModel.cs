@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
 using System.Globalization;
+using System.Xml;
+using CommunityToolkit.Maui.Converters;
 
 namespace steps.MVVM.ViewModels
 {
@@ -26,40 +28,40 @@ namespace steps.MVVM.ViewModels
 
         #region Get Search Result from search bar
 
-        private string _TextSearch;
+        //private string _TextSearch;
 
-        public string SearchBarText
-        {
-            get => _TextSearch;
-            set
-            {
-                _TextSearch = value;
-                if (_TextSearch.Length > 0)
-                {
-                    OnSearchCommand();
-                }
-                else
-                {
-                    Refresh();
-                }
-            }
-        }
+        //public string SearchBarText
+        //{
+        //    get => _TextSearch;
+        //    set
+        //    {
+        //        _TextSearch = value;
+        //        if (_TextSearch.Length > 0)
+        //        {
+        //            OnSearchCommand();
+        //        }
+        //        else
+        //        {
+        //            Refresh();
+        //        }
+        //    }
+        //}
 
-        private void OnSearchCommand()
-        {
-            var SearchMovie = movies.Where(x =>
-            x.Name.Contains(SearchBarText) ||
-            x.Description.Contains(SearchBarText)).ToList();
+        //private void OnSearchCommand()
+        //{
+        //    var SearchMovie = movies.Where(x =>
+        //    x.Name.Contains(SearchBarText) ||
+        //    x.Description.Contains(SearchBarText)).ToList();
 
-            if (SearchMovie.Count > 0)
-            {
-                movies.Clear();
-                foreach (var movie in SearchMovie)
-                {
-                    movies.Add(movie);
-                }
-            }
-        }
+        //    if (SearchMovie.Count > 0)
+        //    {
+        //        movies.Clear();
+        //        foreach (var movie in SearchMovie)
+        //        {
+        //            movies.Add(movie);
+        //        }
+        //    }
+        //}
 
         #endregion
 
@@ -71,10 +73,14 @@ namespace steps.MVVM.ViewModels
 
             AddOrUpdateCommand = new Command(async () =>
             {
-                App._movieRepository.AddOrUpdate(AddMovie);
-                Console.Write(App._movieRepository.StatusMsg);
-                GenerateNewMovie();
-                Refresh();
+                var lenght = AddMovie.Name;
+                if (lenght.Length > 0)
+                {
+                    App._movieRepository.AddOrUpdate(AddMovie);
+                    Console.Write(App._movieRepository.StatusMsg);
+                    GenerateNewMovie();
+                    Refresh();
+                }
             });
 
             DeleteCommand = new Command(() =>
@@ -86,23 +92,11 @@ namespace steps.MVVM.ViewModels
 
         public void GenerateNewMovie()
         {
-            #region Pass Parameter and insert
-
-            //AddMovie = new Movies
-            //{
-            //    Id = 0,
-            //    Name = "Test Name",
-            //    Description = "Test Description",
-            //    Rating = "Test Rating",
-            //    ImageUrl = "Test url"
-            //};
-            #endregion
-
             AddMovie = new Faker<Movies>()
-                .RuleFor(x => x.Name, f => f.Person.FullName)
-                .RuleFor(x => x.Description, f => f.Person.Address.Street)
-                .RuleFor(x => x.Rating, f => f.Person.FullName)
-                .RuleFor(x => x.ImageUrl, f => f.Person.Website)                
+                .RuleFor(x => x.Name, "")
+                .RuleFor(x => x.Description, "")
+                .RuleFor(x => x.Rating, "")
+                .RuleFor(x => x.ImageUrl, "")
                 .Generate();
             AddMovie.isFavorite = true;
             Refresh();
