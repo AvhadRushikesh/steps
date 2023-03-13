@@ -16,15 +16,15 @@
                 </GradientStopCollection>
             </LinearGradientBrush>
         </Grid.Background>
-
         
+           
 
         <VerticalStackLayout
             Spacing="20"
             HorizontalOptions="Center"
             VerticalOptions="Center">
-            
-            <Image Source="sm.jpg" />
+
+            <Image Source="smb.png"/>
 
             
             <Entry
@@ -35,7 +35,7 @@
                 HorizontalOptions="Center"
                 TextColor="Black"
                 HorizontalTextAlignment="Center"
-                BackgroundColor="LightGray"
+                BackgroundColor="AliceBlue"
                 HeightRequest="50"
                 WidthRequest="200"/>
             <Entry
@@ -46,7 +46,7 @@
                 HorizontalOptions="Center"
                 TextColor="Black"
                 HorizontalTextAlignment="Center"
-                BackgroundColor="LightCyan"
+                BackgroundColor="AliceBlue"
                 HeightRequest="50"
                 WidthRequest="200"/>
             <Button

@@ -85,7 +85,7 @@
                     TextColor="Black"
                     FontAttributes="Italic"
                     FontSize="Medium"
-                    Text="{Binding AddMovie.Image}"/>
+                    Text="{Binding AddMovie.ImageUrl}"/>
                 <HorizontalStackLayout >
                     <CheckBox 
                         x:Name="isFavoriteCheckBox"
@@ -177,12 +177,12 @@
 
 
                             <Grid 
-                                Margin="15,15,20,15"
+                                Margin="15,15,20,15"                                
                                 ColumnDefinitions=".2*,.3*,.2*,.2*,.1*">
                                 <Frame
                                     Grid.ColumnSpan="5"
                                     BorderColor="DarkBlue"
-                                    VerticalOptions="Center"
+                                    VerticalOptions="Center"                                    
                                     HorizontalOptions="Center"
                                     WidthRequest="900"
                                     HeightRequest="70" >
@@ -200,9 +200,11 @@
                                     HorizontalOptions="Start"
                                     IsVisible="False"
                                     Text="{Binding Id}" />
-                                <Image
+                                <Image                                    
                                     Grid.Column="0"
                                     VerticalOptions="Center"
+                                    HeightRequest="100"
+                                    WidthRequest="60"
                                     HorizontalOptions="Center"
                                     Source="{Binding ImageUrl}" />
                                 <Label
