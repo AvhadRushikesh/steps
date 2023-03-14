@@ -21,7 +21,7 @@ public partial class Movies : ContentPage
 
         GetColorFromTable();
 
-        GetAllMovieList();
+        GetAllMovieList();        
     }
 
     private async void SetBackground(object sender, EventArgs e)
@@ -80,4 +80,5 @@ public partial class Movies : ContentPage
     {
         moviess = App._movieRepository.GetAll();
     }
+
 }

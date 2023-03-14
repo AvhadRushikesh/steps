@@ -25,7 +25,7 @@ namespace steps.MVVM.ViewModels
 
         public ICommand DeleteCommand { get; set; }
 
-
+        public ICommand UpdateCommand { get; set; }
         public MoviesViewModel()
         {
             Refresh();
@@ -48,6 +48,16 @@ namespace steps.MVVM.ViewModels
                 App._movieRepository.Delete(AddMovie.Id);
                 Refresh();
             });
+
+            //UpdateCommand = new Command(() =>
+            //{
+            //    steps.MVVM.Views.Movies.SearchAndAddGrid.IsVisible = false;
+            //    Views.Movies.AddOrUpdate.Text = "Update";
+            //    Views.Movies.Id.IsVisible = true;
+            //    Views.Movies.Id.IsReadOnly = true;
+            //    Views.Movies.CollectionViewGrid.IsVisible = false;
+            //    Views.Movies.UpdateGrid.IsVisible = true;
+            //});
 
             Refresh();
         }

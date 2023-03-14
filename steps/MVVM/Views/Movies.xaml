@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:steps.MVVM.ViewModels"
+             xmlns:DataTemplate="clr-namespace:steps.Selector"
              x:Class="steps.MVVM.Views.Movies"
-             Title="Movies">    
+             Title="Movies">
+
+    <ContentPage.Resources>
+        <DataTemplate:ProductDataTemplateSelector x:Key="favtemplate" />
+    </ContentPage.Resources>
 
     <Grid 
         x:Name="MainGridofPage"
@@ -138,6 +143,7 @@
             <CollectionView
                 x:Name="MoviesCollectionView"
                 ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=movies}"
+                ItemTemplate="{StaticResource favtemplate}"
                 SelectionMode="Single"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>
@@ -157,10 +163,10 @@
                 </CollectionView.EmptyView>
                 
                 
-                <CollectionView.ItemTemplate>
+                <!--<CollectionView.ItemTemplate>
 
 
-                    <!--#region Data Template Resource Dictionary--> 
+                    --><!--#region Data Template Resource Dictionary--><!-- 
                   
 
                     <DataTemplate>
@@ -177,7 +183,7 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
-                            <!--#region For Update Swipe Right--> 
+                            --><!--#region For Update Swipe Right--><!-- 
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem
@@ -187,7 +193,7 @@
                                         Clicked="Update_Clicked" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
-                            <!--#endregion-->
+                            --><!--#endregion--><!--
 
 
                             <Grid 
@@ -239,28 +245,20 @@
                                     Grid.Column="3"
                                     Background="yellow"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="Start"                                    
+                                    HorizontalOptions="Start"
                                     Text="{Binding Rating}"
                                     TextColor="Black" />
-                                <!--<Image
-                                    Grid.Column="3"
-                                    HorizontalOptions="End"
-                                    HeightRequest="25"
-                                    Source="favorites.png" />
-                                <Label 
-                                    Grid.Column="3"
-                                    Text="{Binding isFavorite}" />-->
 
                             </Grid>
                         </SwipeView>
 
                     </DataTemplate>
                     
-                    <!--#endregion-->
+                    --><!--#endregion--><!--
 
 
 
-                </CollectionView.ItemTemplate>
+                </CollectionView.ItemTemplate>-->
     
     
     
