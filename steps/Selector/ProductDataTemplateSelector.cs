@@ -1,9 +1,4 @@
 ﻿using steps.MVVM.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace steps.Selector
 {
@@ -28,7 +23,6 @@ namespace steps.Selector
                     .TryGetValue("FavoriteStyle", out var favoriteStyle);
                 return favoriteStyle as DataTemplate;
             }
-            return new DataTemplate();
         }
     }
 }

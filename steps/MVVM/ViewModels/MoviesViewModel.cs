@@ -1,16 +1,7 @@
 ﻿using Bogus;
 using steps.MVVM.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using PropertyChanged;
-using System.Globalization;
-using System.Xml;
-using CommunityToolkit.Maui.Converters;
 
 namespace steps.MVVM.ViewModels
 {
@@ -25,7 +16,6 @@ namespace steps.MVVM.ViewModels
 
         public ICommand DeleteCommand { get; set; }
 
-        public ICommand UpdateCommand { get; set; }
         public MoviesViewModel()
         {
             Refresh();
@@ -49,15 +39,6 @@ namespace steps.MVVM.ViewModels
                 Refresh();
             });
 
-            //UpdateCommand = new Command(() =>
-            //{
-            //    steps.MVVM.Views.Movies.SearchAndAddGrid.IsVisible = false;
-            //    Views.Movies.AddOrUpdate.Text = "Update";
-            //    Views.Movies.Id.IsVisible = true;
-            //    Views.Movies.Id.IsReadOnly = true;
-            //    Views.Movies.CollectionViewGrid.IsVisible = false;
-            //    Views.Movies.UpdateGrid.IsVisible = true;
-            //});
 
             Refresh();
         }

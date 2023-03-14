@@ -80,5 +80,4 @@ public partial class Movies : ContentPage
     {
         moviess = App._movieRepository.GetAll();
     }
-
 }

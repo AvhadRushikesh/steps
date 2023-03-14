@@ -29,7 +29,6 @@ namespace steps.MVVM.ViewModels
             });
         }
 
-
         public void GetColorFromTable()
         {
             Addcolor = App._colorRepo.Get(1);

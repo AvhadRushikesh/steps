@@ -1,8 +1,4 @@
 using System.Diagnostics;
-using System.Threading.Tasks;
-using System;
-using CommunityToolkit.Maui.Alerts;
-using steps.MVVM.Views;
 using steps.MVVM.ViewModels;
 using Microsoft.Maui.Graphics.Converters;
 using steps.MVVM.Models;

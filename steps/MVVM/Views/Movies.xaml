@@ -2,20 +2,25 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:steps.MVVM.ViewModels"
-             xmlns:DataTemplate="clr-namespace:steps.Selector"
              x:Class="steps.MVVM.Views.Movies"
              Title="Movies">
 
-    <ContentPage.Resources>
+    
+    <!--#region Use Resource Dictionary Item Template-->
+    
+    <!--xmlns:DataTemplate="clr-namespace:steps.Selector"-->
+    <!--<ContentPage.Resources>
         <DataTemplate:ProductDataTemplateSelector x:Key="favtemplate" />
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
+    <!--ItemTemplate="{StaticResource favtemplate}"-->
+    
+    <!--#endregion-->
 
+    
+    
     <Grid 
         x:Name="MainGridofPage"
-        RowDefinitions=".2*,.9*">
-
-
-       
+        RowDefinitions=".2*,.9*">           
 
 
         <Grid
@@ -43,7 +48,7 @@
         </Grid>
 
 
-        <!--#region Update Grid-->
+        <!--#region Add - Update Grid-->
 
         <Grid
             x:Name="UpdateGrid"
@@ -93,11 +98,10 @@
                     FontSize="Medium"
                     Text="{Binding AddMovie.ImageUrl}"/>
                 <HorizontalStackLayout >
-                    <CheckBox 
-                        x:Name="isFavoriteCheckBox"
+                    <CheckBox
                         HorizontalOptions="Start"
                         Color="HotPink"
-                        BindingContext="{Binding AddMovie.isFavorite}"/>
+                        IsChecked="{Binding AddMovie.isFavorite}"/>
                     <Label 
                         VerticalOptions="Center"
                         FontAttributes="Italic"
@@ -140,10 +144,10 @@
             x:Name="CollectionViewGrid"
             Grid.Row="1" >
             
+                
             <CollectionView
                 x:Name="MoviesCollectionView"
                 ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=movies}"
-                ItemTemplate="{StaticResource favtemplate}"
                 SelectionMode="Single"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>
@@ -163,10 +167,10 @@
                 </CollectionView.EmptyView>
                 
                 
-                <!--<CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate>
 
 
-                    --><!--#region Data Template Resource Dictionary--><!-- 
+                    <!--#region Data Template Resource Dictionary--> 
                   
 
                     <DataTemplate>
@@ -183,7 +187,7 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
-                            --><!--#region For Update Swipe Right--><!-- 
+                            <!--#region For Update Swipe Right--> 
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem
@@ -193,7 +197,7 @@
                                         Clicked="Update_Clicked" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
-                            --><!--#endregion--><!--
+                            <!--#endregion-->
 
 
                             <Grid 
@@ -212,7 +216,7 @@
                                     <Frame.Background>
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Offset="0" Color="#F8F9FA" />
-                                            <GradientStop Offset="0" Color="#DEE2E6" />
+                                            <GradientStop Offset="1" Color="#DEE2E6" />
                                         </LinearGradientBrush>
                                     </Frame.Background>
                                 </Frame>
@@ -245,31 +249,32 @@
                                     Grid.Column="3"
                                     Background="yellow"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="Start"
+                                    HorizontalOptions="Center"
                                     Text="{Binding Rating}"
                                     TextColor="Black" />
+                                <Image
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="Start"
+                                    HeightRequest="20"
+                                    BindingContext="{x:Reference Name=checkbox}"
+                                    IsVisible="{Binding IsChecked}"
+                                    Source="f2.png" />
+                                <CheckBox
+                                    IsVisible="false"
+                                    x:Name="checkbox"
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    IsChecked="{Binding isFavorite}" />
 
                             </Grid>
                         </SwipeView>
 
                     </DataTemplate>
                     
-                    --><!--#endregion--><!--
+                    <!--#endregion-->
 
-
-
-                </CollectionView.ItemTemplate>-->
-    
-    
-    
+                </CollectionView.ItemTemplate>
             </CollectionView>
-
         </Grid>
-
-
-
     </Grid>
-
-
-
 </ContentPage>
