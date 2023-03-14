@@ -2,6 +2,7 @@ using Microsoft.Maui.Graphics.Converters;
 using PropertyChanged;
 using steps.MVVM.Models;
 using steps.MVVM.ViewModels;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace steps.MVVM.Views;
@@ -10,14 +11,17 @@ namespace steps.MVVM.Views;
 public partial class Movies : ContentPage
 {
     public BGColor Getcolor { get; set; }
+    public List<Models.Movies> moviess { get; set; }
 
     public Movies()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         BindingContext = new MoviesViewModel();
 
         GetColorFromTable();
+
+        GetAllMovieList();
     }
 
     private async void SetBackground(object sender, EventArgs e)
@@ -60,6 +64,20 @@ public partial class Movies : ContentPage
     {
         UpdateGrid.IsVisible = false;
         CollectionViewGrid.IsVisible = true;
-        SearchAndAddGrid.IsVisible= true;
+        SearchAndAddGrid.IsVisible = true;
+    }
+    
+    private void SearhBarforMovie_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var SearchMovie = moviess.Where(x =>
+           x.Name.Contains(SearhBarforMovie.Text) ||
+           x.Description.Contains(SearhBarforMovie.Text)).ToList();
+
+        MoviesCollectionView.ItemsSource = SearchMovie;
+    }
+
+    public void GetAllMovieList()
+    {
+        moviess = App._movieRepository.GetAll();
     }
 }

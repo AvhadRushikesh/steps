@@ -18,7 +18,8 @@
             Grid.Row="0">
             <VerticalStackLayout>
                 <SearchBar
-                    Text="{Binding SearchBarText}"
+                    x:Name="SearhBarforMovie"
+                    TextChanged="SearhBarforMovie_TextChanged"
                     Placeholder="Search Movie Name"
                     PlaceholderColor="Black"
                     FontAttributes="Italic"
@@ -131,15 +132,28 @@
 
 
         <Grid
-            x:Name="CollectionViewGrid"            
+            x:Name="CollectionViewGrid"
             Grid.Row="1" >
             
             <CollectionView
+                x:Name="MoviesCollectionView"
                 ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=movies}"
                 SelectionMode="Single"
                 SelectedItem="{Binding AddMovie}">
                 <CollectionView.EmptyView>
-                    <Label Text="No data Found" />
+                    <Grid>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Image 
+                                HeightRequest="150"
+                                Source="notfound.png"
+                                VerticalOptions="Center"/>
+                            <Label 
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                Text="No data Found"
+                                HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
                 </CollectionView.EmptyView>
                 
                 
@@ -177,15 +191,18 @@
 
 
                             <Grid 
-                                Margin="15,15,20,15"                                
-                                ColumnDefinitions=".2*,.3*,.2*,.2*,.1*">
+                                Margin="15,15,20,15"                          
+                                Padding="10"
+                                ColumnDefinitions=".2*,.3*,.2*,.2*,.1*" >
                                 <Frame
                                     Grid.ColumnSpan="5"
+                                    Margin="10,10,10,10"
                                     BorderColor="DarkBlue"
+                                    CornerRadius="1000"
                                     VerticalOptions="Center"                                    
                                     HorizontalOptions="Center"
-                                    WidthRequest="900"
-                                    HeightRequest="70" >
+                                    WidthRequest="10000"
+                                    HeightRequest="100" >
                                     <Frame.Background>
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Offset="0" Color="#F8F9FA" />
@@ -220,10 +237,19 @@
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="3"
+                                    Background="yellow"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="Center"
+                                    HorizontalOptions="Start"                                    
                                     Text="{Binding Rating}"
                                     TextColor="Black" />
+                                <!--<Image
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    HeightRequest="25"
+                                    Source="favorites.png" />
+                                <Label 
+                                    Grid.Column="3"
+                                    Text="{Binding isFavorite}" />-->
 
                             </Grid>
                         </SwipeView>

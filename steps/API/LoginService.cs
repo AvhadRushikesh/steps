@@ -11,21 +11,29 @@ namespace steps.API
     {
         public async Task<UserInfo> Login(string username, string password)
         {
-            var userInfo = new List<UserInfo>();
-            var client = new HttpClient();
-            string url = "https://localhost:7025/api/UsersAuth/login";
-            client.BaseAddress = new Uri(url);
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string content = response.Content.ReadAsStringAsync().Result;
-                userInfo = JsonConvert.DeserializeObject<List<UserInfo>>(content);
-                return await Task.FromResult(userInfo.FirstOrDefault());
+                var userInfo = new List<UserInfo>();
+                var client = new HttpClient();
+                string url = "https://localhost:7025/api/UsersAuth/login/" + username + "/" + password + "";
+                client.BaseAddress = new Uri(url);
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = response.Content.ReadAsStringAsync().Result;
+                    userInfo = JsonConvert.DeserializeObject<List<UserInfo>>(content);
+                    return await Task.FromResult(userInfo.FirstOrDefault());
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                Console.WriteLine(ex.Message);
             }
+            return null;
         }
     }
 }

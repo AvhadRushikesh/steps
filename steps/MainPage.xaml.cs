@@ -13,7 +13,7 @@ namespace steps;
 public partial class MainPage : ContentPage
 {
     
-    // readonly ILoginRepository _loginRepository = new LoginService();
+    readonly ILoginRepository _loginRepository = new LoginService();
 
     public MainPage()
 	{
@@ -38,11 +38,11 @@ public partial class MainPage : ContentPage
         //UserInfo userinfo = await _loginRepository.Login(userName, Password);
         //if (userinfo != null)
         //{
-        //    await Navigation.PushAsync(new steps.MVVM.Views.Tab());
+        //    await Navigation.PushAsync(new MVVM.Views.Tab());
         //}
-        //else 
+        //else
         //{
-        //    await DisplayAlert("Warning", "UserName & Password is Incorrect", "OK");
+        //    await DisplayAlert("Warning", "UserName Or Password is Incorrect", "OK");
         //}
 
         #endregion

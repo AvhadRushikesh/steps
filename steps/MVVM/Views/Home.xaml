@@ -74,19 +74,22 @@
                     </HorizontalStackLayout>
                 </Frame>
                 
-                <Button x:Name="btnRandom"
-                        BackgroundColor="{StaticResource Primary}"
-                        Text="Generate Random color"
-                        FontSize="Medium"
-                        Clicked="btnRandom_Clicked"/>
-                <Button x:Name="SaveBackground"
-                        BackgroundColor="PeachPuff"
-                        Text="Save as background Color"
-                        Clicked="SaveBackGround"
-                        FontAttributes="Bold"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:BGColorViewModel}},Path=AddColorCommand}"
-                        FontSize="Medium"
-                        TextColor="Orange"/>
+                <Button 
+                    x:Name="btnRandom"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Text="Generate Random color"
+                    FontSize="Medium"
+                    Clicked="btnRandom_Clicked"/>
+                <Button 
+                    x:Name="SaveBackground"
+                    BackgroundColor="Black"
+                    Text="Save as background Color"
+                    Clicked="SaveBackGround"
+                    FontAttributes="Bold"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:BGColorViewModel}},Path=AddColorCommand}"
+                    FontSize="Medium"
+                    TextColor="White"/>
 
             </VerticalStackLayout>
             

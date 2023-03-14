@@ -26,6 +26,12 @@ namespace steps.Repositories
         //  Add or Update Movie to Database
         public void AddOrUpdate(Movies movie)
         {
+
+            if(movie.isFavorite == true) 
+            {
+                movie.forfavourite = "";
+            }
+
             int result = 0;
             try
             {
@@ -88,6 +94,5 @@ namespace steps.Repositories
                 StatusMsg = $"Error: {ex.Message}";
             }
         }
-
     }
 }

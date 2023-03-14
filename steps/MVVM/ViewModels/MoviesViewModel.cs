@@ -26,46 +26,6 @@ namespace steps.MVVM.ViewModels
         public ICommand DeleteCommand { get; set; }
 
 
-        #region Get Search Result from search bar
-
-        private string _TextSearch;
-
-        public string SearchBarText
-        {
-            get => _TextSearch;
-            set
-            {
-                _TextSearch = value;
-                if (_TextSearch.Length > 0)
-                {
-                    OnSearchCommand();
-                }
-                else
-                {
-                    Refresh();
-                }
-            }
-        }
-
-        private void OnSearchCommand()
-        {
-            var SearchMovie = movies.Where(x =>
-            x.Name.Contains(SearchBarText) ||
-            x.Description.Contains(SearchBarText)).ToList();
-
-            if (SearchMovie.Count > 0)
-            {
-                movies.Clear();
-                foreach (var movie in SearchMovie)
-                {
-                    movies.Add(movie);
-                }
-            }
-        }
-
-        #endregion
-
-
         public MoviesViewModel()
         {
             Refresh();

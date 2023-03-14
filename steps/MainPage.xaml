@@ -24,12 +24,14 @@
             HorizontalOptions="Center"
             VerticalOptions="Center">
 
-            <Image Source="smb.png"/>
+            <Image Source="smb.png"
+                   MaximumHeightRequest="200"/>
 
             
             <Entry
                 x:Name="UserEntry"
                 Placeholder="User Name"
+                Text="admin"
                 PlaceholderColor="Black"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
@@ -41,6 +43,7 @@
             <Entry
                 x:Name="PasswordEntry"
                 Placeholder="Password"
+                Text="Password1"
                 PlaceholderColor="Black"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
