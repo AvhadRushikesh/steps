@@ -8,6 +8,6 @@ namespace steps.API
 {
     public interface ILoginRepository
     {
-        Task<UserInfo> Login(string username, string password);
+        // Task<UserInfo> Login(string username, string password);
     }
 }
