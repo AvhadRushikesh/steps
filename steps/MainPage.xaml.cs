@@ -19,7 +19,7 @@ public partial class MainPage : ContentPage
 
     private async void Login_Clicked(object sender, EventArgs e)
     {
-        // await Navigation.PushAsync(new steps.MVVM.Views.Tab());
+        await Navigation.PushAsync(new steps.MVVM.Views.Tab());
 
         #region Login using API Credentials Need to pass username and password in API
 
@@ -44,51 +44,51 @@ public partial class MainPage : ContentPage
         #endregion
 
         #region Test using Magicvilla Login
-        try
-        {
-            LoginRequestDto credential = new()
-            {
-                UserName = UserEntry.Text,
-                Password = PasswordEntry.Text
-            };
+        //try
+        //{
+        //    LoginRequestDto credential = new()
+        //    {
+        //        UserName = UserEntry.Text,
+        //        Password = PasswordEntry.Text
+        //    };
 
 
-            var test1 = credential.UserName;
-            var test2 = credential.Password;
+        //    var test1 = credential.UserName;
+        //    var test2 = credential.Password;
 
 
-            APIResponse response = await _authService.LoginAsync<APIResponse>(credential);
+        //    APIResponse response = await _authService.LoginAsync<APIResponse>(credential);
 
-            if (response != null && response.IsSuccess)
-            {
-                #region From Magic Villa API Consumption Check Token
+        //    if (response != null && response.IsSuccess)
+        //    {
+        //        #region From Magic Villa API Consumption Check Token
 
-                //LoginResponseDto model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
+        //        //LoginResponseDto model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
 
-                //var handler = new JwtSecurityTokenHandler();
-                //var jwt = handler.ReadJwtToken(model.Token);
+        //        //var handler = new JwtSecurityTokenHandler();
+        //        //var jwt = handler.ReadJwtToken(model.Token);
 
-                //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                //identity.AddClaim(new Claim(ClaimTypes.Name, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
-                //identity.AddClaim(new Claim(ClaimTypes.Role, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
-                //var principal = new ClaimsPrincipal(identity);
-                //// await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        //        //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+        //        //identity.AddClaim(new Claim(ClaimTypes.Name, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
+        //        //identity.AddClaim(new Claim(ClaimTypes.Role, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
+        //        //var principal = new ClaimsPrincipal(identity);
+        //        //// await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                //HttpContext.Session.SetString(Class1.SessionToken, model.Token);
+        //        //HttpContext.Session.SetString(Class1.SessionToken, model.Token);
 
-                #endregion
+        //        #endregion
 
-                await Navigation.PushAsync(new steps.MVVM.Views.Tab());
-            }
-            else
-            {
-                await DisplayAlert("Warning", "Access Denied", "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Warning", ex.Message, "Ok");
-        }
+        //        await Navigation.PushAsync(new steps.MVVM.Views.Tab());
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert("Warning", "Access Denied", "OK");
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    await DisplayAlert("Warning", ex.Message, "Ok");
+        //}
         #endregion
 
         #region Testing Using Dummy API

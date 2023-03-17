@@ -31,7 +31,6 @@
             <Entry
                 x:Name="UserEntry"
                 Placeholder="User Name"
-                Text="admin"
                 PlaceholderColor="Black"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
@@ -43,7 +42,6 @@
             <Entry
                 x:Name="PasswordEntry"
                 Placeholder="Password"
-                Text="Password1"
                 PlaceholderColor="Black"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
