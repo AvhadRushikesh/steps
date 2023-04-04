@@ -1,6 +1,4 @@
-﻿
-using steps.API.Service;
-using steps.MVVM.Views;
+﻿using steps.MVVM.Views;
 using steps.Repositories;
 
 namespace steps;

@@ -6,18 +6,6 @@
              Title="Movies">
 
     
-    <!--#region Use Resource Dictionary Item Template-->
-    
-    <!--xmlns:DataTemplate="clr-namespace:steps.Selector"-->
-    <!--<ContentPage.Resources>
-        <DataTemplate:ProductDataTemplateSelector x:Key="favtemplate" />
-    </ContentPage.Resources>-->
-    <!--ItemTemplate="{StaticResource favtemplate}"-->
-    
-    <!--#endregion-->
-
-    
-    
     <Grid 
         x:Name="MainGridofPage"
         RowDefinitions=".2*,.9*">           
