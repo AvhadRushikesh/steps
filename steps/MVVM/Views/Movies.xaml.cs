@@ -26,7 +26,7 @@ public partial class Movies : ContentPage
 
     private async void SetBackground(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Home());
+        await Navigation.PushAsync(new ChangeBackground());
     }
 
     private void AddMovie_Clicked(object sender, EventArgs e)
