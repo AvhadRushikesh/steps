@@ -31,8 +31,6 @@ public partial class Movies : ContentPage
 
     private void AddMovie_Clicked(object sender, EventArgs e)
     {
-        // await Navigation.PushAsync(new AddNewMovies());
-
         SearchAndAddGrid.IsVisible = false;
         Id.IsVisible = false;
         AddOrUpdate.Text = "Add";
@@ -79,5 +77,10 @@ public partial class Movies : ContentPage
     public void GetAllMovieList()
     {
         moviess = App._movieRepository.GetAll();
+    }
+
+    private async void ImageButton_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new steps.MVVM.Views.ChangeBackground());
     }
 }

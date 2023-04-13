@@ -6,10 +6,12 @@
              Title="Movies">
 
     
+    
     <Grid 
         x:Name="MainGridofPage"
-        RowDefinitions=".2*,.9*">           
-
+        RowDefinitions=".2*,.9*">
+        
+        
 
         <Grid
             x:Name="SearchAndAddGrid"
@@ -22,16 +24,25 @@
                     PlaceholderColor="Black"
                     FontAttributes="Italic"
                     TextColor="Black" />
-                <Button
-                    Text="+"
-                    TextColor="White"
-                    WidthRequest="50"
-                    HorizontalOptions="End"
-                    CornerRadius="100"
-                    BackgroundColor="DarkBlue"
-                    FontAttributes="Bold"
-                    Clicked="AddMovie_Clicked"
-                    FontSize="Large" />
+                <HorizontalStackLayout Spacing="250">
+                    <Button
+                        Text="+"
+                        TextColor="White"
+                        WidthRequest="50"
+                        HorizontalOptions="Start"
+                        CornerRadius="100"
+                        BackgroundColor="DarkBlue"
+                        FontAttributes="Bold"
+                        Clicked="AddMovie_Clicked"
+                        FontSize="Large" />
+                    <ImageButton 
+                        Source="dotnet_bot.svg"
+                        Clicked="ImageButton_Clicked"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"/>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </Grid>
 
@@ -264,5 +275,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
+
+
+
+
     </Grid>
 </ContentPage>

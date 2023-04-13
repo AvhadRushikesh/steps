@@ -2,22 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:steps.MVVM.ViewModels"
-             x:Class="steps.MVVM.Views.Home">
+             x:Class="steps.MVVM.Views.ChangeBackground">
 
-  
-    
     <ContentPage.Resources>
         <Color x:Key="Primary">#ab3527</Color>
         <Color x:Key="Secondary">#775752</Color>
         <Color x:Key="Tertiary">#705c2e</Color>
     </ContentPage.Resources>
 
-    
+
 
     <Grid
         x:Name="MainGridOfPage"
         RowDefinitions=".2*,.8*">
-        
+
         <Label Text="Save Color as Background Color for Application" 
                VerticalOptions="Center"
                HorizontalOptions="Center"
@@ -30,7 +28,7 @@
                     FontSize="Large"
                     HorizontalTextAlignment="Center"
                     Text="Set Background Color"/>
-                
+
                 <Label Text="Red Color"
                        TextColor="Red"
                        FontAttributes="Bold"/>
@@ -40,7 +38,7 @@
                     MinimumTrackColor="{StaticResource Secondary}"
                     ThumbColor="{StaticResource Primary}"
                     ValueChanged="Slider_ValueChanged"/>
-                
+
                 <Label Text="Green Color"
                         TextColor="Green"
                        FontAttributes="Bold"/>
@@ -50,7 +48,7 @@
                     MinimumTrackColor="{StaticResource Secondary}"
                     ThumbColor="{StaticResource Primary}"
                     ValueChanged="Slider_ValueChanged"/>
-                
+
                 <Label Text="Blue Color"
                         TextColor="Blue"
                        FontAttributes="Bold"/>
@@ -60,7 +58,7 @@
                     MinimumTrackColor="{StaticResource Secondary}"
                     ThumbColor="{StaticResource Primary}"
                     ValueChanged="Slider_ValueChanged"/>
-                
+
                 <Frame CornerRadius="25" HorizontalOptions="Center" BackgroundColor="DarkBlue">
                     <HorizontalStackLayout>
                         <Label
@@ -70,10 +68,10 @@
                             FontSize="Medium"
                             TextColor="White"
                             VerticalOptions="Center"/>
-                        
+
                     </HorizontalStackLayout>
                 </Frame>
-                
+
                 <Button 
                     x:Name="btnRandom"
                     BackgroundColor="Black"
@@ -92,7 +90,8 @@
                     TextColor="White"/>
 
             </VerticalStackLayout>
-            
+
         </Frame>
     </Grid>
+
 </ContentPage>

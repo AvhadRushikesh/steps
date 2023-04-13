@@ -1,26 +1,24 @@
+using System.Windows.Input;
 using System.Diagnostics;
 using steps.MVVM.ViewModels;
 using Microsoft.Maui.Graphics.Converters;
 using steps.MVVM.Models;
-using System.Windows.Input;
 
 namespace steps.MVVM.Views;
 
-public partial class Home : ContentPage
+public partial class ChangeBackground : ContentPage
 {
+
     bool isRandom;
     string hexValue;
-
     public BGColor Getcolor { get; set; }
-
     public ICommand AddColorCommand { get; set; }
 
-    public Home()
-    {
-        InitializeComponent();
+    public ChangeBackground()
+	{
+		InitializeComponent();
 
         GetColorFromTable();
-
         BindingContext = new BGColorViewModel();
     }
 
