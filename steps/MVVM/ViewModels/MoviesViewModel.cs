@@ -2,12 +2,106 @@
 using steps.MVVM.Models;
 using System.Windows.Input;
 using PropertyChanged;
+using System.Text.Json;
+using steps.DTO;
+using System.Text;
+using Android.Graphics;
 
 namespace steps.MVVM.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class MoviesViewModel
     {
+        #region Consuming API
+
+        HttpClient client;
+        JsonSerializerOptions _serializeOptions;
+        //string baseUrl = "https://localhost:7216/api";
+        string baseUrl = "https://64008f0d29deaba5cb3a5609.mockapi.io";
+        private List<MoviesDto> moviesAPI;  //  Change From moviesAPI to movies
+
+        public ICommand GetAllMoviesCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/users";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var data = 
+                        await JsonSerializer
+                        .DeserializeAsync<List<MoviesDto>>(responseStream, _serializeOptions);
+                        moviesAPI = data;
+                    }
+                }
+            });
+
+
+        //  Get Single Record
+        public ICommand GetSinglemovieCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/movies/1";
+            });
+
+        //  Add Record
+        public ICommand AddMovieCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/movies";
+                var movie = new MoviesDto
+                {
+                    id = 1,
+                    name = "",
+                    description = "",
+                    rating = "",
+                    imageUrl = "",
+                    isFavorite = true
+                };
+                string json =
+                     JsonSerializer.Serialize<MoviesDto>(movie, _serializeOptions);
+
+                StringContent content =
+                    new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(url, content);
+            });
+
+
+
+        // Update the Records
+        public ICommand UpdateMovieCommand =>
+            new Command(async () =>
+            {
+                var moviess = movies.FirstOrDefault(x => x.Id == 1);
+                var url = $"{baseUrl}/movies/1";
+
+                moviess.Name = "Hulk";
+
+                string json =
+                     JsonSerializer.Serialize<Movies>(moviess, _serializeOptions);
+
+                StringContent content =
+                    new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(url, content);
+            });
+
+        // Delete Record
+        public ICommand DeleteUserCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/movies/10";
+                var response = await client.DeleteAsync(url);
+            });
+        #endregion
+
+
+
+
+
+
         public List<Movies> movies { get; set; }
 
         public Movies AddMovie { get; set; }
@@ -20,6 +114,16 @@ namespace steps.MVVM.ViewModels
         {
             Refresh();
             GenerateNewMovie();
+
+            #region Consume API
+
+            client = new HttpClient();
+            _serializeOptions = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+
+            #endregion
 
             AddOrUpdateCommand = new Command(async () =>
             {
