@@ -46,6 +46,18 @@
                 <Button 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=GetAllMoviesCommand}" 
                     Text="All Movies API" />
+                <!--<Button 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=UpdateMovieCommand}" 
+                    Text="Update Movie" />-->
+                <!--<Button 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=GetSinglemovieCommand}" 
+                    Text="Get Single Movies Details" />-->
+                <!--<Button 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteMovieCommand}" 
+                    Text="Delete Movie" />-->
+                <!--<Button 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddMovieCommand}" 
+                    Text="Create Movies" />-->
             </VerticalStackLayout>
         </Grid>
 
