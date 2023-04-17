@@ -3,15 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:steps.MVVM.ViewModels"
              x:Class="steps.MVVM.Views.Movies"
-             Title="Movies">
-
-    
+             Title="Movies">    
     
     <Grid 
         x:Name="MainGridofPage"
         RowDefinitions=".2*,.9*">
-        
-        
 
         <Grid
             x:Name="SearchAndAddGrid"
@@ -43,9 +39,12 @@
                         HeightRequest="50"
                         WidthRequest="50"/>
                 </HorizontalStackLayout>
-                <Button 
+
+                <!--#region Command Button for Testing-->
+                
+                <!--<Button
                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=GetAllMoviesCommand}" 
-                    Text="All Movies API" />
+                    Text="All Movies API" />-->
                 <!--<Button 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=UpdateMovieCommand}" 
                     Text="Update Movie" />-->
@@ -58,9 +57,12 @@
                 <!--<Button 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddMovieCommand}" 
                     Text="Create Movies" />-->
+                
+                <!--#endregion-->
+                
+                
             </VerticalStackLayout>
         </Grid>
-
 
         <!--#region Add - Update Grid-->
 
@@ -198,7 +200,6 @@
                                         IsVisible="True"
                                         BackgroundColor="DarkRed"                                        
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteMovieCommand}" />
-                                        <!--Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />-->
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 
@@ -241,45 +242,45 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="Start"
                                     IsVisible="False"
-                                    Text="{Binding Id}" />
-                                <Image                                    
+                                    Text="{Binding AddMovie.Id}" />
+                                <Image
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     HeightRequest="100"
                                     WidthRequest="60"
                                     HorizontalOptions="Center"
-                                    Source="{Binding ImageUrl}" />
+                                    Source="{Binding AddMovie.ImageUrl}" />
                                 <Label
                                     Grid.Column="1"
                                     VerticalOptions="Center"
-                                    Text="{Binding Name}"
+                                    Text="{Binding AddMovie.Name}"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="2"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Description}" 
+                                    Text="{Binding AddMovie.Description}" 
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="3"
                                     Background="yellow"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Rating}"
+                                    Text="{Binding AddMovie.Rating}"
                                     TextColor="Black" />
                                 <Image
                                     VerticalOptions="Start"
                                     HorizontalOptions="Start"
                                     HeightRequest="20"
                                     BindingContext="{x:Reference Name=checkbox}"
-                                    IsVisible="{Binding IsChecked}"
+                                    IsVisible="{Binding AddMovie.IsChecked}"
                                     Source="f2.png" />
                                 <CheckBox
-                                    IsVisible="false"
                                     x:Name="checkbox"
+                                    IsVisible="false"
                                     Grid.Column="3"
                                     HorizontalOptions="End"
-                                    IsChecked="{Binding isFavorite}" />
+                                    IsChecked="{Binding AddMovie.isFavorite}" />
 
                             </Grid>
                         </SwipeView>
