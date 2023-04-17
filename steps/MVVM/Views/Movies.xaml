@@ -133,7 +133,7 @@
                     WidthRequest="350"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddOrUpdateCommand}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddMovieCommand}"
                     Clicked="CancelUpdate_Clicked"/>
                 <Button
                     Text="Cancel"
@@ -197,7 +197,8 @@
                                         IconImageSource="fontello.ttf"
                                         IsVisible="True"
                                         BackgroundColor="DarkRed"                                        
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteMovieCommand}" />
+                                        <!--Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteCommand}" />-->
                                 </SwipeItems>
                             </SwipeView.LeftItems>
 

@@ -13,7 +13,7 @@ namespace steps.MVVM.ViewModels
     public class MoviesViewModel
     {
         //public List<Movies> movies { get; set; }
-        public List<MoviesDto> movies { get; set; }
+        //public List<MoviesDto> movies { get; set; }
         public Movies AddMovie { get; set; }
 
         #region Consuming API
@@ -21,30 +21,33 @@ namespace steps.MVVM.ViewModels
         HttpClient _client;
         JsonSerializerOptions _serializerOptions;
 
+        
+        public static string baseUrl = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7216/api" : "https://localhost:7216/api";
 
-        string baseUrl = "https://localhost:7216/api";
-        private List<MoviesDto> moviesAPI;  //  Change From moviesAPI to movies
+        private List<MoviesDto> movies;  //  Change From moviesAPI to movies
+
+
 
         #region Get All Movies using Command Get Verb REST API
 
         //  Get All Movies using Command Get Verb Rest API
-        //public ICommand GetAllMoviesCommand =>
-        //    new Command(async () =>
-        //    {
-        //        var url = $"{baseUrl}/movies";
-        //        var response = await _client.GetAsync(url);
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            using (var responseStream = await response.Content.ReadAsStreamAsync())
-        //            {
-        //                var data =
-        //                await JsonSerializer
-        //                .DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
-        //                moviesAPI = data;
-        //                // movies = data;
-        //            }
-        //        }
-        //    });
+        public ICommand GetAllMoviesCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/movies";
+                var response = await _client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var data =
+                        await JsonSerializer
+                        .DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
+                        //moviesAPI = data;
+                        movies = data;
+                    }
+                }
+            });
         #endregion
 
 
@@ -65,10 +68,10 @@ namespace steps.MVVM.ViewModels
                 var url = $"{baseUrl}/movies";
                 var movie = new MoviesDto
                 {
-                    name = "Falcon and the Winter Solder",
-                    description = "Boyz of Captain America the Firts Avengers",
-                    rating = "1.1",
-                    imageUrl = "thefalconandthewintersolder.png",
+                    name = "Wanda Vision",
+                    description = "The witch take over city",
+                    rating = "2.3",
+                    imageUrl = "wandavision.png",
                     isFavorite = false
                 };
                 string json =
@@ -109,7 +112,8 @@ namespace steps.MVVM.ViewModels
         public ICommand DeleteMovieCommand =>
             new Command(async () =>
             {
-                var url = $"{baseUrl}/movies/10";
+                var id = AddMovie.Id;
+                var url = $"{baseUrl}/movies/{id}";
                 var response = await _client.DeleteAsync(url);
             });
         #endregion
@@ -119,82 +123,37 @@ namespace steps.MVVM.ViewModels
 
 
 
-        
-
-        public ICommand AddOrUpdateCommand { get; set; }
-
-        public ICommand DeleteCommand { get; set; }
-
         public MoviesViewModel()
         {
-
-            #region Consume API
-
-            _client = new HttpClient();
+#if DEBUG
+            HttpsClientHandlerService handler = new HttpsClientHandlerService();
+            _client = new HttpClient(handler.GetPlatformMessageHandler());
+#else
+                    _client = new HttpClient();
+#endif
             _serializerOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
 
-            #endregion
-
-
-            Refresh();
-            GenerateNewMovie();
-
-
-            AddOrUpdateCommand = new Command(async () =>
-            {
-                var lenght = AddMovie.Name;
-                if (lenght.Length > 0)
-                {
-                    App._movieRepository.AddOrUpdate(AddMovie);
-                    Console.Write(App._movieRepository.StatusMsg);
-                    GenerateNewMovie();
-                    //Refresh();
-                }
-            });
-
-            DeleteCommand = new Command(() =>
-            {
-                App._movieRepository.Delete(AddMovie.Id);
-                Refresh();
-            });
-
-
-            Refresh();
+            Refresh();            
         }
 
-        public void GenerateNewMovie()
-        {
-            AddMovie = new Faker<Movies>()
-                .RuleFor(x => x.Name, "")
-                .RuleFor(x => x.Description, "")
-                .RuleFor(x => x.Rating, "")
-                .RuleFor(x => x.ImageUrl, "")
-                .RuleFor(x => x.isFavorite, false)
-                .Generate();
-            Refresh();
-        }
-
+        
         public async void Refresh()
         {
-            //movies = App._movieRepository.GetAll();
-
             var url = $"{baseUrl}/movies";
             var response = await _client.GetAsync(url);
-            if (response.IsSuccessStatusCode)
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 using (var responseStream = await response.Content.ReadAsStreamAsync())
                 {
-                    var data =
-                    await JsonSerializer
-                    .DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
+                    var data = await JsonSerializer.DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
                     movies = data;
                 }
             }
-
         }
     }
 }
