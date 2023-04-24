@@ -18,7 +18,7 @@ public partial class ChangeBackground : ContentPage
 	{
 		InitializeComponent();
 
-        GetColorFromTable();
+        //GetColorFromTable();
         BindingContext = new BGColorViewModel();
     }
 
@@ -71,15 +71,15 @@ public partial class ChangeBackground : ContentPage
             BackColor = testget
         };
 
-        App._colorRepo.AddOrUpdateColor(setcolor);
+        //App._colorRepo.AddOrUpdateColor(setcolor);
     }
 
-    public void GetColorFromTable()
-    {
-        Getcolor = App._colorRepo.Get(1);
-        var seecolor = Getcolor.BackColor;
-        ColorTypeConverter converter = new ColorTypeConverter();
-        Color color = (Color)(converter.ConvertFromInvariantString(seecolor));
-        MainGridOfPage.BackgroundColor = color;
-    }
+    //public void GetColorFromTable()
+    //{
+    //    Getcolor = App._colorRepo.Get(1);
+    //    var seecolor = Getcolor.BackColor;
+    //    ColorTypeConverter converter = new ColorTypeConverter();
+    //    Color color = (Color)(converter.ConvertFromInvariantString(seecolor));
+    //    MainGridOfPage.BackgroundColor = color;
+    //}
 }

@@ -15,14 +15,15 @@ namespace steps.MVVM.ViewModels
         JsonSerializerOptions _serializerOptions;
 
         public List<MoviesDto> movies { get; set; }
-        public MoviesDto AddMovie;// { get; set; }
+        public MoviesDto AddMovie { get; set; }
 
         public static string baseUrl = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7216/api" : "https://localhost:7216/api";
-        private int iD;
-        private string name;
-        private string description;
-        private string rating;
-        private string imageUrl;
+        private int idEntry;
+        private string nameEntry;
+        private string descriptionEntry;
+        private string ratingEntry;
+        private string imageUrlEntry;
+
 
 
 
@@ -42,133 +43,109 @@ namespace steps.MVVM.ViewModels
                 }
             });
 
+        #region Get Single Movie Record
         //  Get Single Record
-        public ICommand GetSinglemovieCommand =>
-            new Command(async () =>
-            {
-                var url = $"{baseUrl}/movies/2";
-                var response = await _client.GetAsync(url);
-            });
+        //public ICommand GetSinglemovieCommand =>
+        //    new Command(async () =>
+        //    {
+        //        var url = $"{baseUrl}/movies/2";
+        //        var response = await _client.GetAsync(url);
+        //    });
+        #endregion
+
 
         #region Get Fields Values for passing parameter
 
-        public int Id
+        public int IdEntry
         {
-            get => iD;
+            get => idEntry;
             set
             {
-                iD = value;
+                idEntry = value;
             }
         }
 
-        public string Name
+        public string NameEntry
         {
-            get => name;
+            get => nameEntry;
             set
             {
-                name = value;
+                nameEntry = value;
             }
         }
 
-        public string Description
+        public string DescriptionEntry
         {
-            get => description;
+            get => descriptionEntry;
             set
             {
-                description = value;
+                descriptionEntry = value;
             }
         }
 
-        public string Rating
+        public string RatingEntry
         {
-            get => rating;
+            get => ratingEntry;
             set
             {
-                rating = value;
+                ratingEntry = value;
             }
         }
 
-        public string ImageUrl
+        public string ImageUrlEntry
         {
-            get => imageUrl;
+            get => imageUrlEntry;
             set
             {
-                imageUrl = value;
+                imageUrlEntry = value;
             }
         }
 
         #endregion
 
+        #region Add New Movie
 
         //  Add Record
-        public ICommand AddMovieCommand =>
-            new Command(async () =>
-            {
-                MoviesDto movieId = new MoviesDto();
+        //public ICommand AddMovieCommand =>
+        //    new Command(async () =>
+        //    {
+        //        MoviesDto movieId = new MoviesDto();
 
-                if (movieId.id > 0)
-                {
-                    var url = $"{baseUrl}/movies/24";
-                    //var movie = moviesAPI.FirstOrDefault(x => x.id == 24);
-                    var movie = new MoviesDto
-                    {
-                        id = movieId.id,
-                        name = "Captain America",
-                        description = "Captain America The Firts Avengers",
-                        rating = "2.1",
-                        imageUrl = "TestUrl.Png",
-                        isFavorite = false
-                    };
+        //        var url = $"{baseUrl}/movies";
 
-                    string json =
-                         JsonSerializer.Serialize<MoviesDto>(movie, _serializerOptions);
+        //        var movie = new MoviesDto
+        //        {
+        //            name = nameEntry,
+        //            description = descriptionEntry,
+        //            rating = ratingEntry,
+        //            imageUrl = imageUrlEntry,
+        //            isFavorite = true
+        //        };
 
-                    StringContent content =
-                        new StringContent(json, Encoding.UTF8, "application/json");
+        //        string json =
+        //         JsonSerializer.Serialize<MoviesDto>(movie, _serializerOptions);
 
-                    var response = await _client.PutAsync(url, content);
-                }
-                else
-                {
-                    var url = $"{baseUrl}/movies";
+        //        StringContent content =
+        //            new StringContent(json, Encoding.UTF8, "application/json");
 
-                    var movie = new MoviesDto
-                    {
-                        name = "Wanda Vision",
-                        description = "The witch take over city",
-                        rating = "2.3",
-                        imageUrl = "wandavision.png",
-                        isFavorite = false
-                    };
-
-                    string json =
-                     JsonSerializer.Serialize<MoviesDto>(movie, _serializerOptions);
-
-                    StringContent content =
-                        new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = await _client.PostAsync(url, content);
-
-                }
-
-
-
-            });
+        //        var response = await _client.PostAsync(url, content);
+        //        //}
+        //    });
+        #endregion
 
         // Update the Records
         public ICommand UpdateMovieCommand =>
             new Command(async () =>
             {
-                var url = $"{baseUrl}/movies/24";
-                //var movie = moviesAPI.FirstOrDefault(x => x.id == 24);
+                var url = $"{baseUrl}/movies/{AddMovie.id}";
                 var movie = new MoviesDto
                 {
-                    id = 24,
-                    name = "Captain America",
-                    description = "Captain America The Firts Avengers",
-                    rating = "2.1",
-                    imageUrl = "TestUrl.Png",
-                    isFavorite = false
+                    id = AddMovie.id,
+                    name = AddMovie.name,
+                    description = AddMovie.description,
+                    rating = AddMovie.rating,
+                    imageUrl = AddMovie.imageUrl,
+                    isFavorite = AddMovie.isFavorite
                 };
 
                 string json =
@@ -215,11 +192,14 @@ namespace steps.MVVM.ViewModels
             var response = await _client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
-                using (var responseStream = await response.Content.ReadAsStreamAsync())
-                {
-                    var data = await JsonSerializer.DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
-                    movies = data;
-                }
+                var responseStream = await response.Content.ReadAsStreamAsync();
+                var data = await JsonSerializer.DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
+                movies = data;
+                //using (var responseStream = await response.Content.ReadAsStreamAsync())
+                //{
+                //    var data = await JsonSerializer.DeserializeAsync<List<MoviesDto>>(responseStream, _serializerOptions);
+                //    movies = data;
+                //}
             }
         }
     }

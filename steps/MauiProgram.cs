@@ -18,9 +18,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<MovieRepository>();
-
-		builder.Services.AddSingleton<BGColorRepo>();
+		#region Used For Database (To Registerd Repositories)
+		//builder.Services.AddSingleton<MovieRepository>();
+		//builder.Services.AddSingleton<BGColorRepo>();
+		#endregion
 
 #if DEBUG
 		builder.Logging.AddDebug();

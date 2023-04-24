@@ -11,17 +11,13 @@ namespace steps.MVVM.Views;
 public partial class Movies : ContentPage
 {
     public BGColor Getcolor { get; set; }
-    public List<Models.Movies> moviess { get; set; }
+    public List<Models.AllMovies> moviess { get; set; }
 
     public Movies()
     {
         InitializeComponent();
 
         BindingContext = new MoviesViewModel();
-
-        GetColorFromTable();
-
-        GetAllMovieList();        
     }
 
     private async void SetBackground(object sender, EventArgs e)
@@ -29,31 +25,15 @@ public partial class Movies : ContentPage
         await Navigation.PushAsync(new ChangeBackground());
     }
 
-    private void AddMovie_Clicked(object sender, EventArgs e)
+    private async void AddMovie_Clicked(object sender, EventArgs e)
     {
-        SearchAndAddGrid.IsVisible = false;
-        Id.IsVisible = false;
-        AddOrUpdate.Text = "Add";
-        CollectionViewGrid.IsVisible = false;
-        UpdateGrid.IsVisible = true;
+        await Navigation.PushAsync(new steps.MVVM.Views.AddMovie());
     }
 
-    public void GetColorFromTable()
-    {
-        Getcolor = App._colorRepo.Get(1);
-        var seecolor = Getcolor.BackColor;
-        ColorTypeConverter converter = new ColorTypeConverter();
-        Color color = (Color)(converter.ConvertFromInvariantString(seecolor));
-        MainGridofPage.BackgroundColor = color;
-        CollectionViewGrid.BackgroundColor = color;
-    }
 
     private void Update_Clicked(object sender, EventArgs e)
     {
         SearchAndAddGrid.IsVisible = false;
-        AddOrUpdate.Text = "Update";
-        Id.IsVisible = true;
-        Id.IsReadOnly = true;
         CollectionViewGrid.IsVisible = false;
         UpdateGrid.IsVisible = true;
     }
@@ -61,10 +41,11 @@ public partial class Movies : ContentPage
     private void CancelUpdate_Clicked(object sender, EventArgs e)
     {
         UpdateGrid.IsVisible = false;
-        CollectionViewGrid.IsVisible = true;
         SearchAndAddGrid.IsVisible = true;
+        CollectionViewGrid.IsVisible = true;
     }
-    
+
+    #region Search Bar for movie
     private void SearhBarforMovie_TextChanged(object sender, TextChangedEventArgs e)
     {
         var SearchMovie = moviess.Where(x =>
@@ -73,14 +54,11 @@ public partial class Movies : ContentPage
 
         MoviesCollectionView.ItemsSource = SearchMovie;
     }
+    #endregion
 
-    public void GetAllMovieList()
-    {
-        moviess = App._movieRepository.GetAll();
-    }
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new steps.MVVM.Views.ChangeBackground());
+        await Navigation.PushAsync(new ChangeBackground());
     }
 }

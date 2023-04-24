@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="steps.MVVM.Views.AddMovie"
+             Title="AddMovie">
+
+    <Grid>
+        <VerticalStackLayout Spacing="20">
+            <Entry
+                x:Name="AddNameEntry"
+                Placeholder="Movie Name"
+                PlaceholderColor="Black"
+                TextColor="Black"
+                FontAttributes="Italic"
+                FontSize="Medium"/>
+            <Entry
+                x:Name="AddDescriptionEntry"
+                Placeholder="Movie Description"
+                PlaceholderColor="Black"
+                TextColor="Black"
+                FontAttributes="Italic"
+                FontSize="Medium"/>
+            <Entry
+                x:Name="AddRatingEntry"
+                Placeholder="Movie Rating"
+                PlaceholderColor="Black"
+                TextColor="Black"
+                FontAttributes="Italic"
+                FontSize="Medium"/>
+            <Entry
+                x:Name="AddImageUrlEntry"
+                Placeholder="http://image.url"
+                PlaceholderColor="Black"
+                TextColor="Black"
+                FontAttributes="Italic"
+                FontSize="Medium"/>
+            <HorizontalStackLayout >
+                <CheckBox
+                    x:Name="IsFavoriteCheckBox"
+                    HorizontalOptions="Start"
+                    Color="HotPink"/>
+                <Label 
+                    VerticalOptions="Center"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="IS Favorite"
+                    TextColor="Black"/>
+            </HorizontalStackLayout>
+            
+            <Button
+                Text="Add"
+                TextColor="White"
+                BackgroundColor="DarkGreen"
+                FontAttributes="Bold"
+                FontSize="Large"
+                WidthRequest="350"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="Add_Clicked"/>
+            <Button
+                Text="Cancel"
+                TextColor="White"
+                BackgroundColor="DarkRed"
+                FontAttributes="Bold"
+                FontSize="Large"
+                WidthRequest="350"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" 
+                Clicked="Cancel_Clicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

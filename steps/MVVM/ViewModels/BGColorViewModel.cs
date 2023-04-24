@@ -14,18 +14,18 @@ namespace steps.MVVM.ViewModels
 
         public BGColorViewModel()
         {
-            GetColorFromTable();
+            //GetColorFromTable();
 
             AddColorCommand = new Command(async () =>
             {
-                App._colorRepo.AddOrUpdateColor(Addcolor);
-                GetColorFromTable();
+                //App._colorRepo.AddOrUpdateColor(Addcolor);
+                //GetColorFromTable();
             });
         }
 
         public void GetColorFromTable()
         {
-            Addcolor = App._colorRepo.Get(1);
+            //Addcolor = App._colorRepo.Get(1);
         }
     }
 }

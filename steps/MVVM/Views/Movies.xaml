@@ -16,7 +16,7 @@
                 <SearchBar
                     x:Name="SearhBarforMovie"
                     TextChanged="SearhBarforMovie_TextChanged"
-                    Placeholder="Search Movie Name"
+                    Placeholder="Search For Movie"
                     PlaceholderColor="Black"
                     FontAttributes="Italic"
                     TextColor="Black" />
@@ -64,98 +64,6 @@
             </VerticalStackLayout>
         </Grid>
 
-        <!--#region Add - Update Grid-->
-
-        <Grid
-            x:Name="UpdateGrid"
-            Grid.Row="1"
-            IsVisible="False"
-            Grid.RowSpan="2"
-            VerticalOptions="Center">
-            <VerticalStackLayout Spacing="20">
-                <Entry
-                    x:Name="Id"
-                    Placeholder="ID"
-                    PlaceholderColor="Black"
-                    TextColor="Black"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Text="{Binding AddMovie.Id}"/>
-                <Entry
-                    x:Name="Name"
-                    Placeholder="Movie Name"
-                    PlaceholderColor="Black"
-                    TextColor="Black"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Text="{Binding AddMovie.Name}"/>
-                <Entry
-                    x:Name="Description"
-                    Placeholder="Movie Description"
-                    PlaceholderColor="Black"
-                    TextColor="Black"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Text="{Binding AddMovie.Description}"/>
-                <Entry
-                    x:Name="Rating"
-                    Placeholder="Movie Rating"
-                    PlaceholderColor="Black"
-                    TextColor="Black"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Text="{Binding AddMovie.Rating}"/>
-                <Entry
-                    x:Name="Image"
-                    Placeholder="http://image.url"
-                    PlaceholderColor="Black"
-                    TextColor="Black"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Text="{Binding AddMovie.ImageUrl}"/>
-                <HorizontalStackLayout >
-                    <CheckBox
-                        HorizontalOptions="Start"
-                        Color="HotPink"
-                        IsChecked="{Binding AddMovie.isFavorite}"/>
-                    <Label 
-                        VerticalOptions="Center"
-                        FontAttributes="Italic"
-                        FontSize="Medium"
-                        Text="IS Favorite"
-                        TextColor="Black"/>
-                </HorizontalStackLayout>
-                <Button
-                    x:Name="AddOrUpdate"
-                    Text="Update"
-                    TextColor="White"
-                    BackgroundColor="DarkGreen"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    WidthRequest="350"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=AddMovieCommand}"
-                    Clicked="CancelUpdate_Clicked"/>
-                <Button
-                    Text="Cancel"
-                    TextColor="White"
-                    BackgroundColor="DarkRed"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    WidthRequest="350"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Clicked="CancelUpdate_Clicked"/>
-            </VerticalStackLayout>
-        </Grid>
-        
-        <!--#endregion-->
-
-
-
-
-
         <Grid
             x:Name="CollectionViewGrid"
             Grid.Row="1" >
@@ -163,9 +71,11 @@
                 
             <CollectionView
                 x:Name="MoviesCollectionView"
-                ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=movies}"
+                ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}}, Path=movies}"
                 SelectionMode="Single"
-                SelectedItem="{Binding AddMovie}">
+                SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}}, Path=AddMovie}">
+                
+                <!--#region If Empty / No Data Found -->
                 <CollectionView.EmptyView>
                     <Grid>
                         <VerticalStackLayout VerticalOptions="Center">
@@ -180,18 +90,18 @@
                                 HorizontalTextAlignment="Center" />
                         </VerticalStackLayout>
                     </Grid>
-                </CollectionView.EmptyView>
-                
+                </CollectionView.EmptyView>                
+                <!--#endregion-->
                 
                 <CollectionView.ItemTemplate>
 
-
-                    <!--#region Data Template Resource Dictionary--> 
-                  
+                    <!--#region Data Template Resource Dictionary-->                  
 
                     <DataTemplate>
 
                         <SwipeView>
+
+                            <!--#region Delete Movie on swipe to left -->
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem
@@ -202,6 +112,7 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=DeleteMovieCommand}" />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
+                            <!--#endregion-->
 
                             <!--#region For Update Swipe Right--> 
                             <SwipeView.RightItems>
@@ -229,45 +140,39 @@
                                     HorizontalOptions="Center"
                                     WidthRequest="10000"
                                     HeightRequest="100" >
-                                    <Frame.Background>
+                                <Frame.Background>
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Offset="0" Color="#F8F9FA" />
-                                            <GradientStop Offset="1" Color="#DEE2E6" />
+                                            <GradientStop Offset="1" Color="LightBlue" />
                                         </LinearGradientBrush>
                                     </Frame.Background>
                                 </Frame>
 
-                                <Label
-                                    Grid.Column="0"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Start"
-                                    IsVisible="False"
-                                    Text="{Binding AddMovie.Id}" />
                                 <Image
                                     Grid.Column="0"
                                     VerticalOptions="Center"
                                     HeightRequest="100"
                                     WidthRequest="60"
                                     HorizontalOptions="Center"
-                                    Source="{Binding AddMovie.ImageUrl}" />
+                                    Source="{Binding AddMovie.imageUrl}" />
                                 <Label
                                     Grid.Column="1"
                                     VerticalOptions="Center"
-                                    Text="{Binding AddMovie.Name}"
-                                    TextColor="Black" />
+                                    TextColor="Black" 
+                                    Text="{Binding AddMovie.name}"/>
                                 <Label
                                     Grid.Column="2"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Text="{Binding AddMovie.Description}" 
-                                    TextColor="Black" />
+                                    TextColor="Black" 
+                                    Text="{Binding AddMovie.description}" />
                                 <Label
                                     Grid.Column="3"
                                     Background="yellow"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    Text="{Binding AddMovie.Rating}"
-                                    TextColor="Black" />
+                                    TextColor="Black" 
+                                    Text="{Binding AddMovie.rating}" />
                                 <Image
                                     VerticalOptions="Start"
                                     HorizontalOptions="Start"
@@ -283,6 +188,7 @@
                                     IsChecked="{Binding AddMovie.isFavorite}" />
 
                             </Grid>
+                            
                         </SwipeView>
 
                     </DataTemplate>
@@ -293,8 +199,94 @@
             </CollectionView>
         </Grid>
 
+        <!--#region Update Grid-->
 
+        <Grid
+            x:Name="UpdateGrid"
+            Grid.Row="1"
+            IsVisible="False"
+            Grid.RowSpan="2"
+            VerticalOptions="Center">
+            <VerticalStackLayout Spacing="20">
+                <!--<Entry
+                    x:Name="IdEntry"
+                    Placeholder="ID"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.id}"/>-->
+                <Entry
+                    x:Name="NameEntry"
+                    Placeholder="Movie Name"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.name}"/>
+                <Entry
+                    x:Name="DescriptionEntry"
+                    Placeholder="Movie Description"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Text="{Binding AddMovie.description}"/>
+                <Entry
+                    x:Name="RatingEntry"
+                    Placeholder="Movie Rating"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                Text="{Binding AddMovie.rating}"/>
+                <Entry
+                    x:Name="ImageUrlEntry"
+                    Placeholder="http://image.url"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                Text="{Binding AddMovie.imageUrl}"/>
+                <HorizontalStackLayout >
+                    <CheckBox
+                        HorizontalOptions="Start"
+                        Color="HotPink"
+                        IsChecked="{Binding AddMovie.isFavorite}"/>
+                    <Label 
+                        VerticalOptions="Center"
+                        FontAttributes="Italic"
+                        FontSize="Medium"
+                        Text="IS Favorite"
+                        TextColor="Black"/>
+                </HorizontalStackLayout>
+                <Button
+                    x:Name="Update"
+                    Text="Update"
+                    TextColor="White"
+                    BackgroundColor="DarkGreen"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    WidthRequest="350"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:MoviesViewModel}},Path=UpdateMovieCommand}"
+                    Clicked="CancelUpdate_Clicked"/>
+                <Button
+                    Text="Cancel"
+                    TextColor="White"
+                    BackgroundColor="DarkRed"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    WidthRequest="350"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Clicked="CancelUpdate_Clicked"/>
+            </VerticalStackLayout>
+        </Grid>
 
-
+        <!--#endregion-->
+        
     </Grid>
+    
 </ContentPage>
